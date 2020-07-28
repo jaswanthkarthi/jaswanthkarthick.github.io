@@ -1,30 +1,32 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-16">
-	<title>igcs</title>
-
+	<meta charset="utf-8" contentType="text/html;">
+	<title></title>
 </head>
 <body bgcolor="pink">
 
 <label>Choose a font : </label>
+<div>
+<div id="fontslet" data-font="NORMAL_SANS">
 
-<select id="fontslet" data-font="NORMAL_SANS" onchange="changeValue(this)">
-    <option value="NORMAL_SANS" selected="selected">normal text</option>
-  <option value="BOLD_SANS" >bold text</option>
-  <option value="ITALIC_SANS">italic text</option>
-  <option value="BOLD_ITALIC_SANS">bold & italic </option>
-    <option value="BUBBLE_TEXT_BLACKED" >bubble blacked</option>
-    <option value="SQUARE_TEXT_NORMAL" >square text</option>
-    <option value="SQUARE_TEXT_BLACKED" >bold blacked</option>
-    <option value="MONOSPACE_TEXT" >monospace text</option>
-    <option value="CURSIVE_TEXT" >cursive text</option>
-    <option value="DOUBLE_OUTLINE_TEXT" >double outline</option>
-    <option value="SPACING_TEXT" >spacing text</option>
+    <button value="NORMAL_SANS" onclick="changeValue(this)">normal text</button>
+  <button value="BOLD_SANS" onclick="changeValue(this)">bold text</button>
+  <button value="ITALIC_SANS" onclick="changeValue(this)">italic text</button>
+  <button value="BOLD_ITALIC_SANS" onclick="changeValue(this)">bold & italic </button>
+<!--    <button value="BUBBLE_TEXT_BLACKED" onclick="changeValue(this)">bubble blacked</button>-->
+<!--    <button value="SQUARE_TEXT_NORMAL" onclick="changeValue(this)">square text</button>-->
+<!--    <button value="SQUARE_TEXT_BLACKED" onclick="changeValue(this)">bold blacked</button>-->
+<!--    <button value="MONOSPACE_TEXT" onclick="changeValue(this)">monospace text</button>-->
+<!--    <button value="CURSIVE_TEXT" onclick="changeValue(this)">cursive text</button>-->
+<!--    <button value="DOUBLE_OUTLINE_TEXT" onclick="changeValue(this)">double outline</button>-->
+<!--    <button value="SPACING_TEXT" onclick="changeValue(this)">spacing text</button>-->
+</div>
 
-</select>
+</div>
 
-<div contenteditable="true" id="editor" style="height: 500px;width: 1000px;background-color: white;margin-top: 75px;"></div>
+<textarea id="editor" style="height: 500px;width: 1000px;background-color: white;margin-top: 75px;"></textarea>
+
 
 
 <script type="text/javascript">
@@ -39,63 +41,228 @@ var fonts={
 
 "BOLD_ITALIC_SANS":{"CAPSFIRST":"𝘼","CAPSLAST":"𝙕","SMALLFIRST":"𝙖","SMALLLAST":"𝙯","STATUS":{"containsall":"0:s","notcontains":"numbers","REGEX":"[A-Za-z]"}},
 
-"BUBBLE_TEXT_BLACKED":{"CAPSFIRST":"🅐","CAPSLAST":"🅩","SMALLFIRST":"🅐","SMALLLAST":"🅩","NUMBERFIRST":"➊","NUMBERLAST":"➒","STATUS":{"containsall":"1:e","exceptionlist":"0","changeto":"⓿","REGEX":"[A-Za-z1-9]"}},
+// "BUBBLE_TEXT_BLACKED":{"CAPSFIRST":"🅐","CAPSLAST":"🅩","SMALLFIRST":"🅐","SMALLLAST":"🅩","NUMBERFIRST":"➊","NUMBERLAST":"➒","STATUS":{"containsall":"1:e","exceptionlist":"0","changeto":"⓿","REGEX":"[A-Za-z1-9]"}},
+//
+// "SQUARE_TEXT_NORMAL":{"CAPSFIRST":"🄰","CAPSLAST":"🅉","SMALLFIRST":"🄰","SMALLLAST":"🅉","STATUS":{"containsall":"0:s","notcontains":"numbers","REGEX":"[A-Za-z]"}},
+//
+// "SQUARE_TEXT_BLACKED":{"CAPSFIRST":"🅰","CAPSLAST":"🆉","SMALLFIRST":"🅰","SMALLLAST":"🆉","STATUS":{"containsall":"0:s","notcontains":"numbers","REGEX":"[A-Za-z]"}},
+//
+// "MONOSPACE_TEXT":{"CAPSFIRST":"𝙰","CAPSLAST":"𝚉","SMALLFIRST":"𝚊","SMALLLAST":"𝚣","NUMBERFIRST":"𝟶","NUMBERLAST":"𝟿","STATUS":{"containsall":"1:s","REGEX":"[A-Za-z0-9]"}},
 
-"SQUARE_TEXT_NORMAL":{"CAPSFIRST":"🄰","CAPSLAST":"🅉","SMALLFIRST":"🄰","SMALLLAST":"🅉","STATUS":{"containsall":"0:s","notcontains":"numbers","REGEX":"[A-Za-z]"}},
+// "CURSIVE_TEXT":{"CAPSFIRST":"𝒜","CAPSLAST":"𝒵","SMALLFIRST":"𝒶","SMALLLAST":"𝓏","STATUS":{"containsall":"0:s","notcontains":"numbers","REGEX":"[A-Za-z]"}},
+//
+// "DOUBLE_OUTLINE_TEXT":{"CAPSFIRST":"𝔸","CAPSLAST":"ℤ","SMALLFIRST":"𝕒","SMALLLAST":"𝕫","NUMBERFIRST":"𝟘","NUMBERLAST":"𝟡","STATUS":{"containsall":"1:s","REGEX":"[A-Za-z0-9]"}},
 
-"SQUARE_TEXT_BLACKED":{"CAPSFIRST":"🅰","CAPSLAST":"🆉","SMALLFIRST":"🅰","SMALLLAST":"🆉","STATUS":{"containsall":"0:s","notcontains":"numbers","REGEX":"[A-Za-z]"}},
+// "SPACING_TEXT":{"CAPSFIRST":"Ａ","CAPSLAST":"Ｚ","SMALLFIRST":"ａ","SMALLLAST":"ｚ","NUMBERFIRST":"０","NUMBERLAST":"９","STATUS":{"containsall":"1:s","REGEX":"[A-Za-z0-9]"}},
 
-"MONOSPACE_TEXT":{"CAPSFIRST":"𝙰","CAPSLAST":"𝚉","SMALLFIRST":"𝚊","SMALLLAST":"𝚣","NUMBERFIRST":"𝟶","NUMBERLAST":"𝟿","STATUS":{"containsall":"1:s","REGEX":"[A-Za-z0-9]"}},
-
-"CURSIVE_TEXT":{"CAPSFIRST":"𝒜","CAPSLAST":"𝒵","SMALLFIRST":"𝒶","SMALLLAST":"𝓏","STATUS":{"containsall":"0:s","notcontains":"numbers","REGEX":"[A-Za-z]"}},
-
-"DOUBLE_OUTLINE_TEXT":{"CAPSFIRST":"𝔸","CAPSLAST":"ℤ","SMALLFIRST":"𝕒","SMALLLAST":"𝕫","NUMBERFIRST":"𝟘","NUMBERLAST":"𝟡","STATUS":{"containsall":"1:s","REGEX":"[A-Za-z0-9]"}},
-
-"SPACING_TEXT":{"CAPSFIRST":"Ａ","CAPSLAST":"Ｚ","SMALLFIRST":"ａ","SMALLLAST":"ｚ","NUMBERFIRST":"０","NUMBERLAST":"９","STATUS":{"containsall":"1:s","REGEX":"[A-Za-z0-9]"}},
-
-"REGEXCHECK":[{"LIST":"𝖠𝖡𝖢𝖣𝖤𝖥𝖦𝖧𝖨𝖦𝖪𝖫𝖬𝖭𝖮𝖯𝖰𝖱𝖲𝖳𝖴𝖵𝖶𝖷𝖸𝖹𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗚𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝘈𝘉𝘊𝘋𝘌𝘍𝘎𝘏𝘐𝘎𝘒𝘓𝘔𝘕𝘖𝘗𝘘𝘙𝘚𝘛𝘜𝘝𝘞𝘟𝘠𝘡𝘼𝘽𝘾𝘿𝙀𝙁𝙂𝙃𝙄𝙂𝙆𝙇𝙈𝙉𝙊𝙋𝙌𝙍𝙎𝙏𝙐𝙑𝙒𝙓𝙔𝙕","NAME":"caps"},
+"REGEXCHECK":[{"LIST":"𝖠𝖡𝖢𝖣𝖤𝖥𝖦𝖧𝖨𝖦𝖪𝖫𝖬𝖭𝖮𝖯𝖰𝖱𝖲𝖳𝖴𝖵𝖶𝖷𝖸𝖹𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗚𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝘈𝘉𝘊𝘋𝘌𝘍𝘎𝘏𝘐𝘎𝘒𝘓𝘔𝘕𝘖𝘗𝘘𝘙𝘚𝘛𝘜𝘝𝘞𝘟𝘠𝘡𝘼𝘽𝘾𝘿𝙀𝙁𝙂𝙃𝙄𝙅𝙂𝙆𝙇𝙈𝙉𝙊𝙋𝙌𝙍𝙎𝙏𝙐𝙑𝙒𝙓𝙔𝙕","NAME":"caps"},
 	{"LIST":"𝖺𝖻𝖼𝖽𝖾𝖿𝗀𝗁𝗂𝗃𝗄𝗅𝗆𝗇𝗈𝗉𝗊𝗋𝗌𝗍𝗎𝗏𝗐𝗑𝗒𝗓𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇𝘢𝘣𝘤𝘥𝘦𝘧𝘨𝘩𝘪𝘫𝘬𝘭𝘮𝘯𝘰𝘱𝘲𝘳𝘴𝘵𝘶𝘷𝘸𝘹𝘺𝘻𝙖𝙗𝙘𝙙𝙚𝙛𝙜𝙝𝙞𝙟𝙠𝙡𝙢𝙣𝙤𝙥𝙦𝙧𝙨𝙩𝙪𝙫𝙬𝙭𝙮𝙯","NAME":"small"},
 	{"LIST":"𝟢𝟣𝟤𝟥𝟦𝟧𝟨𝟩𝟪𝟫𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵","NAME":"number"}
 ]
 };
 
+function getInputSelection(el) {
+  var start = 0, end = 0, normalizedValue, range,
+          textInputRange, len, endRange;
+
+  if (typeof el.selectionStart == "number" && typeof el.selectionEnd == "number") {
+    start = el.selectionStart;
+    end = el.selectionEnd;
+  } else {
+    range = document.selection.createRange();
+
+    if (range && range.parentElement() === el) {
+      len = el.value.length;
+      normalizedValue = el.value.replace(/\r\n/g, "\n");
+
+      // Create a working TextRange that lives only in the input
+      textInputRange = el.createTextRange();
+      textInputRange.moveToBookmark(range.getBookmark());
+
+      // Check if the start and end of the selection are at the very end
+      // of the input, since moveStart/moveEnd doesn't return what we want
+      // in those cases
+      endRange = el.createTextRange();
+      endRange.collapse(false);
+
+      if (textInputRange.compareEndPoints("StartToEnd", endRange) > -1) {
+        start = end = len;
+      } else {
+        start = -textInputRange.moveStart("character", -len);
+        start += normalizedValue.slice(0, start).split("\n").length - 1;
+
+        if (textInputRange.compareEndPoints("EndToEnd", endRange) > -1) {
+          end = len;
+        } else {
+          end = -textInputRange.moveEnd("character", -len);
+          end += normalizedValue.slice(0, end).split("\n").length - 1;
+        }
+      }
+    }
+  }
+
+  return {
+    start: start,
+    end: end
+  };
+}
+
+function replaceSelectedText(el, text) {
+  var sel = getInputSelection(el), val = el.value;
+  let newText = translateSelectRange(text);
+  console.log(1)
+  el.value = val.slice(0, sel.start) + newText + val.slice(sel.end);
+}
+
+function translateSelectRange(text) {
+
+  var newtext="";
+  text=[...text];
+  for (x=0;x<text.length;x++) {
+
+      var char = text[x];
+      var array = fonts["REGEXCHECK"];
+      let bool = false;
+      var identity = "";
+      var newchar;
+      var toFont = document.getElementById("fontslet").getAttribute("data-font");
+      var fontStyle = fonts[toFont];
+      var indexNumber = 0;
+      var caps = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      var small = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
+      var number = "0123456789012345678901234567890123456789";
+      var diff;
+
+      for (let i = 0; i < array.length; i++) {
+
+        if (bool === false) {
+
+          if (array[i]["LIST"].indexOf(char) !== -1) {
+            indexNumber = array[i]["LIST"].indexOf(char)/2;
+            identity = array[i]["NAME"];
+            bool = true;
+          }
+
+        }
+      }
+      let normalChar = "";
+      if (identity === "number") {
+        normalChar = number[indexNumber];
+      } else if (identity === "small") {
+        normalChar = small[indexNumber];
+      } else if (identity === "caps") {
+        normalChar = caps[indexNumber];
+      }
+
+      if (bool === true) {
+
+        if (fontStyle["STATUS"]["containsall"][0] === "0") {
+          if (fontStyle["STATUS"]["notcontains"].includes(identity)) {
+
+            if (/[A-Z]/.test(normalChar)) {
+              diff = "𝖠".codePointAt(0) - "A".codePointAt(0);
+            } else if (/[a-z]/.test(normalChar)) {
+              diff = "𝖺".codePointAt(0) - "a".codePointAt(0);
+            } else if (/[0-9]/.test(normalChar)) {
+              diff = "𝟢".codePointAt(0) - "0".codePointAt(0);
+            }
+            newchar = String.fromCodePoint(normalChar.codePointAt(0) + diff);
+
+          } else {
+
+            if (/[A-Z]/.test(normalChar)) {
+              diff = fontStyle["CAPSFIRST"].codePointAt(0) - "A".codePointAt(0);
+            } else if (/[a-z]/.test(normalChar)) {
+              diff = fontStyle["SMALLFIRST"].codePointAt(0) - "a".codePointAt(0);
+            } else if (/[0-9]/.test(normalChar)) {
+              diff = fontStyle["NUMBERFIRST"].codePointAt(0) - "0".codePointAt(0);
+            }
+            newchar = String.fromCodePoint(normalChar.codePointAt(0) + diff);
+
+          }
+        } else {
+
+          if (/[A-Z]/.test(normalChar)) {
+            diff = fontStyle["CAPSFIRST"].codePointAt(0) - "A".codePointAt(0);
+          } else if (/[a-z]/.test(normalChar)) {
+            diff = fontStyle["SMALLFIRST"].codePointAt(0) - "a".codePointAt(0);
+          } else if (/[0-9]/.test(normalChar)) {
+            diff = fontStyle["NUMBERFIRST"].codePointAt(0) - "0".codePointAt(0);
+          }
+          newchar = String.fromCodePoint(normalChar.codePointAt(0) + diff);
+
+        }
+
+      } else {
+        newchar = char;
+      }
+
+      newtext += newchar;
+
+  }
+  return newtext;
+
+}
+	
 	 function changeValue(e){
 
-		var e = document.getElementById("fontslet");
-	 	e.setAttribute("data-font",e.options[e.selectedIndex].value);
+		var el = document.getElementById("fontslet");
+	 	el.setAttribute("data-font",e.getAttribute("value"));
+         var txtarea = document.getElementById("editor");
+         var start = txtarea.selectionStart;
+         var finish = txtarea.selectionEnd;
+         var sel = txtarea.value.substring(start, finish);
+
+
+       replaceSelectedText(document.getElementById("editor"),sel);
 
 	 }
 var div = document.getElementById("editor");
 
+function insertAtCaret(areaId, text) {
+  var txtarea = document.getElementById(areaId);
+  if (!txtarea) {
+    return;
+  }
 
+  var scrollPos = txtarea.scrollTop;
+  var strPos = 0;
+  var br = ((txtarea.selectionStart || txtarea.selectionStart === '0') ?
+          "ff" : (document.selection ? "ie" : false));
+  if (br === "ie") {
+    txtarea.focus();
+    var range = document.selection.createRange();
+    range.moveStart('character', -txtarea.value.length);
+    strPos = range.text.length;
+  } else if (br === "ff") {
+    strPos = txtarea.selectionStart;
+  }
 
-	 function insertTextAtCursor(text) {
-    var sel, range, textNode;
-    if (window.getSelection) {
-        sel = window.getSelection();
-        if (sel.getRangeAt && sel.rangeCount) {
-            range = sel.getRangeAt(0);
-            range.deleteContents();
-            textNode = document.createTextNode(text);
-            range.insertNode(textNode);
+  var front = (txtarea.value).substring(0, strPos);
+  var back = (txtarea.value).substring(strPos, txtarea.value.length);
+  txtarea.value = front + text + back;
+  strPos = strPos + text.length;
+  if (br === "ie") {
+    txtarea.focus();
+    var ieRange = document.selection.createRange();
+    ieRange.moveStart('character', -txtarea.value.length);
+    ieRange.moveStart('character', strPos);
+    ieRange.moveEnd('character', 0);
+    ieRange.select();
+  } else if (br === "ff") {
+    txtarea.selectionStart = strPos;
+    txtarea.selectionEnd = strPos;
+    txtarea.focus();
+  }
 
-            // Move caret to the end of the newly inserted text node
-            range.setStart(textNode, textNode.length);
-            range.setEnd(textNode, textNode.length);
-            sel.removeAllRanges();
-            sel.addRange(range);
-        }
-    } else if (document.selection && document.selection.createRange) {
-        range = document.selection.createRange();
-        range.pasteHTML(text);
-    }
+  txtarea.scrollTop = scrollPos;
 }
 
 div.onkeypress = function(evt) {
     evt = evt || window.event;
     var charCode = (typeof evt.which == "undefined") ? evt.keyCode : evt.which;
     var charStr = String.fromCharCode(charCode);
-    if(charCode==13 || charStr==" "){
+    if(charCode===13 || charStr===" "){
      //magic happens........
 
     }
@@ -103,20 +270,10 @@ div.onkeypress = function(evt) {
         
         var style=document.getElementById("fontslet").getAttribute("data-font");
 	 	var ch=translateClick(charStr,fonts[style]);
-        insertTextAtCursor(ch);
+      insertAtCaret("editor",ch);
         return false;
     }
 }
-	 // function changeFont(event){
-	 // 	console.log(event);
-
-	 	
-	 // 	console.log(ch);
-	 // 	insertTextAtCursor(ch);
-	 // 	return false;
-
-	 // }
-
 
 function translateClick (char,json)
 {
