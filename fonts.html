@@ -225,7 +225,7 @@ else{
                 } else if (/[a-z]/.test(normalChar)) {
                     diff = fontStyle["SMALLFIRST"].codePointAt(0) - "a".codePointAt(0);
                 } else if (/[0-9]/.test(normalChar)) {
-                    diff = fontStyle["NUMBERFIRST"].codePointAt(0) - "0".codePointAt(0);
+                    diff = fontStyle["NUMBERFIRST"].codePointAt(0) - "1".codePointAt(0);
                 }
                 newchar = String.fromCodePoint(normalChar.codePointAt(0) + diff);
 
@@ -237,7 +237,7 @@ else{
             } else if (/[a-z]/.test(normalChar)) {
                 diff = fontStyle["SMALLFIRST"].codePointAt(0) - "a".codePointAt(0);
             } else if (/[0-9]/.test(normalChar)) {
-                diff = fontStyle["NUMBERFIRST"].codePointAt(0) - "0".codePointAt(0);
+                diff = fontStyle["NUMBERFIRST"].codePointAt(0) - "1".codePointAt(0);
             }
             newchar = String.fromCodePoint(normalChar.codePointAt(0) + diff);
 
