@@ -8,24 +8,25 @@
 
 <label>Choose a font : </label>
 <div>
-<div id="fontslet" data-font="NORMAL_SANS">
+<div id="fontslet" data-font="NORMAL">
 
-    <button value="NORMAL_SANS" onclick="changeValue(this)">normal text</button>
-  <button value="BOLD_SANS" onclick="changeValue(this)">bold text</button>
-  <button value="ITALIC_SANS" onclick="changeValue(this)">italic text</button>
-  <button value="BOLD_ITALIC_SANS" onclick="changeValue(this)">bold & italic </button>
-<!--    <button value="BUBBLE_TEXT_BLACKED" onclick="changeValue(this)">bubble blacked</button>-->
-<!--    <button value="SQUARE_TEXT_NORMAL" onclick="changeValue(this)">square text</button>-->
-<!--    <button value="SQUARE_TEXT_BLACKED" onclick="changeValue(this)">bold blacked</button>-->
-<!--    <button value="MONOSPACE_TEXT" onclick="changeValue(this)">monospace text</button>-->
+    <button value="NORMAL" onclick="changeValue(this)">Normal text</button>
+    <button value="NORMAL_SANS" onclick="changeValue(this)">sans text</button>
+  <button value="BOLD_SANS" onclick="changeValue(this)">boldsans text</button>
+  <button value="ITALIC_SANS" onclick="changeValue(this)">italicsans text</button>
+  <button value="BOLD_ITALIC_SANS" onclick="changeValue(this)">bold & italic sans </button>
+    <button value="BUBBLE_TEXT_BLACKED" onclick="changeValue(this)">bubble blacked</button>
+    <button value="SQUARE_TEXT_NORMAL" onclick="changeValue(this)">square text</button>
+    <button value="SQUARE_TEXT_BLACKED" onclick="changeValue(this)">bold blacked</button>
+    <button value="MONOSPACE_TEXT" onclick="changeValue(this)">monospace text</button>
 <!--    <button value="CURSIVE_TEXT" onclick="changeValue(this)">cursive text</button>-->
 <!--    <button value="DOUBLE_OUTLINE_TEXT" onclick="changeValue(this)">double outline</button>-->
-<!--    <button value="SPACING_TEXT" onclick="changeValue(this)">spacing text</button>-->
+    <button value="SPACING_TEXT" onclick="changeValue(this)">spacing text</button>
 </div>
 
 </div>
 
-<textarea id="editor" style="height: 500px;width: 1000px;background-color: white;margin-top: 75px;"></textarea>
+<div style="position: relative;width: 380px;height: 630px;margin-left: auto;margin-right: auto;"><textarea id="editor" maxlength="2200" style="height: 625px;background-color: white;resize: none;border: none;margin-top: 75px;font-size: 16px;font-family: 'Roboto Thin', 'Helvetica Neue',sans-seriff;font-weight: 400;width: 375px;letter-spacing: normal;padding:10px 0px 11px 8px;border-radius: 10px;" autocapitalize="none" spellcheck="true" placeholder="Tap here to writing."></textarea></div>
 
 
 
@@ -33,7 +34,9 @@
 
 var fonts={
 
-"NORMAL_SANS":{"CAPSFIRST":"𝖠","CAPSLAST":"𝖹","SMALLFIRST":"𝖺","SMALLLAST":"𝗓","NUMBERFIRST":"𝟢","NUMBERLAST":"𝟫","STATUS":{"containsall":"1:s","REGEX":"[A-Za-z0-9]"}},
+    "NORMAL":{"CAPSFIRST":"A","CAPSLAST":"Z","SMALLFIRST":"a","SMALLLAST":"z","NUMBERFIRST":"0","NUMBERLAST":"9","STATUS":{"containsall":"1:s","REGEX":"[A-Za-z0-9]"}},
+
+    "NORMAL_SANS":{"CAPSFIRST":"𝖠","CAPSLAST":"𝖹","SMALLFIRST":"𝖺","SMALLLAST":"𝗓","NUMBERFIRST":"𝟢","NUMBERLAST":"𝟫","STATUS":{"containsall":"1:s","REGEX":"[A-Za-z0-9]"}},
 
 "BOLD_SANS":{"CAPSFIRST":"𝗔","CAPSLAST":"𝗭","SMALLFIRST":"𝗮","SMALLLAST":"𝘇","NUMBERFIRST":"𝟬","NUMBERLAST":"𝟵","STATUS":{"containsall":"1:s","REGEX":"[A-Za-z0-9]"}},
 
@@ -41,23 +44,23 @@ var fonts={
 
 "BOLD_ITALIC_SANS":{"CAPSFIRST":"𝘼","CAPSLAST":"𝙕","SMALLFIRST":"𝙖","SMALLLAST":"𝙯","STATUS":{"containsall":"0:s","notcontains":"numbers","REGEX":"[A-Za-z]"}},
 
-// "BUBBLE_TEXT_BLACKED":{"CAPSFIRST":"🅐","CAPSLAST":"🅩","SMALLFIRST":"🅐","SMALLLAST":"🅩","NUMBERFIRST":"➊","NUMBERLAST":"➒","STATUS":{"containsall":"1:e","exceptionlist":"0","changeto":"⓿","REGEX":"[A-Za-z1-9]"}},
-//
-// "SQUARE_TEXT_NORMAL":{"CAPSFIRST":"🄰","CAPSLAST":"🅉","SMALLFIRST":"🄰","SMALLLAST":"🅉","STATUS":{"containsall":"0:s","notcontains":"numbers","REGEX":"[A-Za-z]"}},
-//
-// "SQUARE_TEXT_BLACKED":{"CAPSFIRST":"🅰","CAPSLAST":"🆉","SMALLFIRST":"🅰","SMALLLAST":"🆉","STATUS":{"containsall":"0:s","notcontains":"numbers","REGEX":"[A-Za-z]"}},
-//
-// "MONOSPACE_TEXT":{"CAPSFIRST":"𝙰","CAPSLAST":"𝚉","SMALLFIRST":"𝚊","SMALLLAST":"𝚣","NUMBERFIRST":"𝟶","NUMBERLAST":"𝟿","STATUS":{"containsall":"1:s","REGEX":"[A-Za-z0-9]"}},
+"BUBBLE_TEXT_BLACKED":{"CAPSFIRST":"🅐","CAPSLAST":"🅩","SMALLFIRST":"🅐","SMALLLAST":"🅩","NUMBERFIRST":"➊","NUMBERLAST":"➒","STATUS":{"containsall":"1:e","exceptionlist":"0","changeto":"⓿","REGEX":"[A-Za-z1-9]"}},
+
+"SQUARE_TEXT_NORMAL":{"CAPSFIRST":"🄰","CAPSLAST":"🅉","SMALLFIRST":"🄰","SMALLLAST":"🅉","STATUS":{"containsall":"0:s","notcontains":"numbers","REGEX":"[A-Za-z]"}},
+
+"SQUARE_TEXT_BLACKED":{"CAPSFIRST":"🅰","CAPSLAST":"🆉","SMALLFIRST":"🅰","SMALLLAST":"🆉","STATUS":{"containsall":"0:s","notcontains":"numbers","REGEX":"[A-Za-z]"}},
+
+"MONOSPACE_TEXT":{"CAPSFIRST":"𝙰","CAPSLAST":"𝚉","SMALLFIRST":"𝚊","SMALLLAST":"𝚣","NUMBERFIRST":"𝟶","NUMBERLAST":"𝟿","STATUS":{"containsall":"1:s","REGEX":"[A-Za-z0-9]"}},
 
 // "CURSIVE_TEXT":{"CAPSFIRST":"𝒜","CAPSLAST":"𝒵","SMALLFIRST":"𝒶","SMALLLAST":"𝓏","STATUS":{"containsall":"0:s","notcontains":"numbers","REGEX":"[A-Za-z]"}},
 //
 // "DOUBLE_OUTLINE_TEXT":{"CAPSFIRST":"𝔸","CAPSLAST":"ℤ","SMALLFIRST":"𝕒","SMALLLAST":"𝕫","NUMBERFIRST":"𝟘","NUMBERLAST":"𝟡","STATUS":{"containsall":"1:s","REGEX":"[A-Za-z0-9]"}},
 
-// "SPACING_TEXT":{"CAPSFIRST":"Ａ","CAPSLAST":"Ｚ","SMALLFIRST":"ａ","SMALLLAST":"ｚ","NUMBERFIRST":"０","NUMBERLAST":"９","STATUS":{"containsall":"1:s","REGEX":"[A-Za-z0-9]"}},
+"SPACING_TEXT":{"CAPSFIRST":"Ａ","CAPSLAST":"Ｚ","SMALLFIRST":"ａ","SMALLLAST":"ｚ","NUMBERFIRST":"０","NUMBERLAST":"９","STATUS":{"containsall":"1:s","REGEX":"[A-Za-z0-9]"}},
 
-"REGEXCHECK":[{"LIST":"𝖠𝖡𝖢𝖣𝖤𝖥𝖦𝖧𝖨𝖦𝖪𝖫𝖬𝖭𝖮𝖯𝖰𝖱𝖲𝖳𝖴𝖵𝖶𝖷𝖸𝖹𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗚𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝘈𝘉𝘊𝘋𝘌𝘍𝘎𝘏𝘐𝘎𝘒𝘓𝘔𝘕𝘖𝘗𝘘𝘙𝘚𝘛𝘜𝘝𝘞𝘟𝘠𝘡𝘼𝘽𝘾𝘿𝙀𝙁𝙂𝙃𝙄𝙅𝙂𝙆𝙇𝙈𝙉𝙊𝙋𝙌𝙍𝙎𝙏𝙐𝙑𝙒𝙓𝙔𝙕","NAME":"caps"},
-	{"LIST":"𝖺𝖻𝖼𝖽𝖾𝖿𝗀𝗁𝗂𝗃𝗄𝗅𝗆𝗇𝗈𝗉𝗊𝗋𝗌𝗍𝗎𝗏𝗐𝗑𝗒𝗓𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇𝘢𝘣𝘤𝘥𝘦𝘧𝘨𝘩𝘪𝘫𝘬𝘭𝘮𝘯𝘰𝘱𝘲𝘳𝘴𝘵𝘶𝘷𝘸𝘹𝘺𝘻𝙖𝙗𝙘𝙙𝙚𝙛𝙜𝙝𝙞𝙟𝙠𝙡𝙢𝙣𝙤𝙥𝙦𝙧𝙨𝙩𝙪𝙫𝙬𝙭𝙮𝙯","NAME":"small"},
-	{"LIST":"𝟢𝟣𝟤𝟥𝟦𝟧𝟨𝟩𝟪𝟫𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵","NAME":"number"}
+"REGEXCHECK":[{"LIST":"ABCDEFGHIJKLMNOPQRSTUVWXYZ𝖠𝖡𝖢𝖣𝖤𝖥𝖦𝖧𝖨𝖩𝖪𝖫𝖬𝖭𝖮𝖯𝖰𝖱𝖲𝖳𝖴𝖵𝖶𝖷𝖸𝖹𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝘈𝘉𝘊𝘋𝘌𝘍𝘎𝘏𝘐𝘑𝘒𝘓𝘔𝘕𝘖𝘗𝘘𝘙𝘚𝘛𝘜𝘝𝘞𝘟𝘠𝘡𝘼𝘽𝘾𝘿𝙀𝙁𝙂𝙃𝙄𝙅𝙆𝙇𝙈𝙉𝙊𝙋𝙌𝙍𝙎𝙏𝙐𝙑𝙒𝙓𝙔𝙕🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉🅰🅱🅲🅳🅴🅵🅶🅷🅸🅹🅺🅻🅼🅽🅾🅿🆀🆁🆂🆃🆄🆅🆆🆇🆈🆉𝙰𝙱𝙲𝙳𝙴𝙵𝙶𝙷𝙸𝙹𝙺𝙻𝙼𝙽𝙾𝙿𝚀𝚁𝚂𝚃𝚄𝚅𝚆𝚇𝚈𝚉ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ","NAME":"caps"},
+	{"LIST":"abcdefghijklmnopqrstuvwxyz𝖺𝖻𝖼𝖽𝖾𝖿𝗀𝗁𝗂𝗃𝗄𝗅𝗆𝗇𝗈𝗉𝗊𝗋𝗌𝗍𝗎𝗏𝗐𝗑𝗒𝗓𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇𝘢𝘣𝘤𝘥𝘦𝘧𝘨𝘩𝘪𝘫𝘬𝘭𝘮𝘯𝘰𝘱𝘲𝘳𝘴𝘵𝘶𝘷𝘸𝘹𝘺𝘻𝙖𝙗𝙘𝙙𝙚𝙛𝙜𝙝𝙞𝙟𝙠𝙡𝙢𝙣𝙤𝙥𝙦𝙧𝙨𝙩𝙪𝙫𝙬𝙭𝙮𝙯🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉🅰🅱🅲🅳🅴🅵🅶🅷🅸🅹🅺🅻🅼🅽🅾🅿🆀🆁🆂🆃🆄🆅🆆🆇🆈🆉𝚊𝚋𝚌𝚍𝚎𝚏𝚐𝚑𝚒𝚓𝚔𝚕𝚖𝚗𝚘𝚙𝚚𝚛𝚜𝚝𝚞𝚟𝚠𝚡𝚢𝚣ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ","NAME":"small"},
+	{"LIST":"0123456789𝟢𝟣𝟤𝟥𝟦𝟧𝟨𝟩𝟪𝟫𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵⓿➊➋➌➍➎➏➐➑➒𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿０１２３４５６７８９","NAME":"number"}
 ]
 };
 
@@ -128,17 +131,19 @@ function translateSelectRange(text) {
       var toFont = document.getElementById("fontslet").getAttribute("data-font");
       var fontStyle = fonts[toFont];
       var indexNumber = 0;
-      var caps = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      var small = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
-      var number = "0123456789012345678901234567890123456789";
+      var caps = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      var small = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
+      var number = "0123456789012345678901234567890123456789012345678901234567890123456789";
       var diff;
 
       for (let i = 0; i < array.length; i++) {
 
         if (bool === false) {
 
-          if (array[i]["LIST"].indexOf(char) !== -1) {
-            indexNumber = array[i]["LIST"].indexOf(char)/2;
+          if ([...array[i]["LIST"]].indexOf(char) !== -1) {
+
+                  indexNumber = [...array[i]["LIST"]].indexOf(char);
+
             identity = array[i]["NAME"];
             bool = true;
           }
@@ -155,43 +160,91 @@ function translateSelectRange(text) {
       }
 
       if (bool === true) {
-
-        if (fontStyle["STATUS"]["containsall"][0] === "0") {
-          if (fontStyle["STATUS"]["notcontains"].includes(identity)) {
+if(fontStyle["STATUS"]["containsall"][2] === "s") {
+    if (fontStyle["STATUS"]["containsall"][0] === "0") {
+        if (fontStyle["STATUS"]["notcontains"].includes(identity)) {
 
             if (/[A-Z]/.test(normalChar)) {
-              diff = "𝖠".codePointAt(0) - "A".codePointAt(0);
+                diff = "𝖠".codePointAt(0) - "A".codePointAt(0);
             } else if (/[a-z]/.test(normalChar)) {
-              diff = "𝖺".codePointAt(0) - "a".codePointAt(0);
+                diff = "𝖺".codePointAt(0) - "a".codePointAt(0);
             } else if (/[0-9]/.test(normalChar)) {
-              diff = "𝟢".codePointAt(0) - "0".codePointAt(0);
+                diff = "𝟢".codePointAt(0) - "0".codePointAt(0);
             }
             newchar = String.fromCodePoint(normalChar.codePointAt(0) + diff);
 
-          } else {
-
-            if (/[A-Z]/.test(normalChar)) {
-              diff = fontStyle["CAPSFIRST"].codePointAt(0) - "A".codePointAt(0);
-            } else if (/[a-z]/.test(normalChar)) {
-              diff = fontStyle["SMALLFIRST"].codePointAt(0) - "a".codePointAt(0);
-            } else if (/[0-9]/.test(normalChar)) {
-              diff = fontStyle["NUMBERFIRST"].codePointAt(0) - "0".codePointAt(0);
-            }
-            newchar = String.fromCodePoint(normalChar.codePointAt(0) + diff);
-
-          }
         } else {
 
-          if (/[A-Z]/.test(normalChar)) {
-            diff = fontStyle["CAPSFIRST"].codePointAt(0) - "A".codePointAt(0);
-          } else if (/[a-z]/.test(normalChar)) {
-            diff = fontStyle["SMALLFIRST"].codePointAt(0) - "a".codePointAt(0);
-          } else if (/[0-9]/.test(normalChar)) {
-            diff = fontStyle["NUMBERFIRST"].codePointAt(0) - "0".codePointAt(0);
-          }
-          newchar = String.fromCodePoint(normalChar.codePointAt(0) + diff);
+            if (/[A-Z]/.test(normalChar)) {
+                diff = fontStyle["CAPSFIRST"].codePointAt(0) - "A".codePointAt(0);
+            } else if (/[a-z]/.test(normalChar)) {
+                diff = fontStyle["SMALLFIRST"].codePointAt(0) - "a".codePointAt(0);
+            } else if (/[0-9]/.test(normalChar)) {
+                diff = fontStyle["NUMBERFIRST"].codePointAt(0) - "0".codePointAt(0);
+            }
+            newchar = String.fromCodePoint(normalChar.codePointAt(0) + diff);
 
         }
+    } else {
+
+        if (/[A-Z]/.test(normalChar)) {
+            diff = fontStyle["CAPSFIRST"].codePointAt(0) - "A".codePointAt(0);
+        } else if (/[a-z]/.test(normalChar)) {
+            diff = fontStyle["SMALLFIRST"].codePointAt(0) - "a".codePointAt(0);
+        } else if (/[0-9]/.test(normalChar)) {
+            diff = fontStyle["NUMBERFIRST"].codePointAt(0) - "0".codePointAt(0);
+        }
+        newchar = String.fromCodePoint(normalChar.codePointAt(0) + diff);
+
+    }
+
+}
+
+else{
+
+    if(fontStyle["STATUS"]["exceptionlist"].indexOf(normalChar)!==-1){
+        newchar=[...fontStyle["STATUS"]["changeto"]][fontStyle["STATUS"]["exceptionlist"].indexOf(normalChar)];
+    }
+    else {
+        if (fontStyle["STATUS"]["containsall"][0] === "0") {
+            if (fontStyle["STATUS"]["notcontains"].includes(identity)) {
+
+                if (/[A-Z]/.test(normalChar)) {
+                    diff = "𝖠".codePointAt(0) - "A".codePointAt(0);
+                } else if (/[a-z]/.test(normalChar)) {
+                    diff = "𝖺".codePointAt(0) - "a".codePointAt(0);
+                } else if (/[0-9]/.test(normalChar)) {
+                    diff = "𝟢".codePointAt(0) - "0".codePointAt(0);
+                }
+                newchar = String.fromCodePoint(normalChar.codePointAt(0) + diff);
+
+            } else {
+
+                if (/[A-Z]/.test(normalChar)) {
+                    diff = fontStyle["CAPSFIRST"].codePointAt(0) - "A".codePointAt(0);
+                } else if (/[a-z]/.test(normalChar)) {
+                    diff = fontStyle["SMALLFIRST"].codePointAt(0) - "a".codePointAt(0);
+                } else if (/[0-9]/.test(normalChar)) {
+                    diff = fontStyle["NUMBERFIRST"].codePointAt(0) - "0".codePointAt(0);
+                }
+                newchar = String.fromCodePoint(normalChar.codePointAt(0) + diff);
+
+            }
+        } else {
+
+            if (/[A-Z]/.test(normalChar)) {
+                diff = fontStyle["CAPSFIRST"].codePointAt(0) - "A".codePointAt(0);
+            } else if (/[a-z]/.test(normalChar)) {
+                diff = fontStyle["SMALLFIRST"].codePointAt(0) - "a".codePointAt(0);
+            } else if (/[0-9]/.test(normalChar)) {
+                diff = fontStyle["NUMBERFIRST"].codePointAt(0) - "0".codePointAt(0);
+            }
+            newchar = String.fromCodePoint(normalChar.codePointAt(0) + diff);
+
+        }
+    }
+
+}
 
       } else {
         newchar = char;
@@ -203,7 +256,7 @@ function translateSelectRange(text) {
   return newtext;
 
 }
-	
+
 	 function changeValue(e){
 
 		var el = document.getElementById("fontslet");
@@ -218,6 +271,7 @@ function translateSelectRange(text) {
 
 	 }
 var div = document.getElementById("editor");
+
 
 function insertAtCaret(areaId, text) {
   var txtarea = document.getElementById(areaId);
@@ -262,17 +316,24 @@ div.onkeypress = function(evt) {
     evt = evt || window.event;
     var charCode = (typeof evt.which == "undefined") ? evt.keyCode : evt.which;
     var charStr = String.fromCharCode(charCode);
-    if(charCode===13 || charStr===" "){
-     //magic happens........
+    if(document.getElementById("fontslet").getAttribute("data-font")==="NORMAL"){
+
+        //boooooom........
 
     }
-    else if(charCode) {
-        
-        var style=document.getElementById("fontslet").getAttribute("data-font");
-	 	var ch=translateClick(charStr,fonts[style]);
-      insertAtCaret("editor",ch);
-        return false;
+    else{
+        if (charCode === 13 || charStr === " ") {
+            //magic happens........
+
+        } else if (charCode) {
+
+            var style = document.getElementById("fontslet").getAttribute("data-font");
+            var ch = translateClick(charStr, fonts[style]);
+            insertAtCaret("editor", ch);
+            return false;
+        }
     }
+
 }
 
 function translateClick (char,json)
@@ -322,7 +383,7 @@ function translateClick (char,json)
                 } else if (/[a-z]/.test(char)) {
                     diff = json["SMALLFIRST"].codePointAt(0) - "a".codePointAt(0);
                 } else if (/[0-9]/.test(char)) {
-                    diff = json["NUMBERFIRST"].codePointAt(0) - "0".codePointAt(0);
+                    diff = json["NUMBERFIRST"].codePointAt(0) - "1".codePointAt(0);
                 }
                 character = String.fromCodePoint(char.codePointAt(0) + diff);
 
