@@ -3,9 +3,32 @@
 <head>
 	<meta charset="utf-8" contentType="text/html;">
 	<title></title>
+
+    <style>
+
+        .tagname{
+
+            background-color: #FAFAFA;
+            height: 300px;
+            width:275px;
+            position: absolute;
+            border-radius: 5px;
+            /*border: gray 1px solid;*/
+            box-shadow: 0.4px 0.4px 0.4px 0.4px gray;
+            font-family: Roboto, Helvetica, sans-serif;
+            overflow: scroll;
+
+        }
+
+        body{
+            position: relative;
+        }
+
+    </style>
+
 </head>
-<body bgcolor="pink">
-<div style="z-index: 1;">
+<body bgcolor="pink" onclick="document.getElementById('tag-name').style.display='none';">
+<div style="position: absolute;">
 <label>Choose a font : </label>
 <div>
     <button onclick="if(document.getElementById('fontslet').style.display==='none'){document.getElementById('fontslet').style.display='';}else{document.getElementById('fontslet').style.display='none'}document.getElementById('editor').focus()">show text styles</button>
@@ -24,21 +47,29 @@
 <!--    <button value="DOUBLE_OUTLINE_TEXT" onclick="changeValue(this)">double outline</button>-->
     <button value="SPACING_TEXT" onclick="changeValue(this)">spacing text</button>
 </div>
-<div id="alert" style="color: red;font-weight: normal;font-size: 18px;position: absolute;height: 40px;border: red 1px solid;background-color: #ffcccb;display: none;margin-left: 400px;"></div>
+<div id="alert" style="color: #ff0000;font-weight: normal;font-size: 18px;position: absolute;height: 40px;border: red 1px solid;background-color: #ffcccb;display: none;margin-left: 400px;"></div>
 </div>
 
-<div style="position: relative;width: 380px;height: 630px;margin-left: auto;margin-right: auto;"><textarea onblur=""  id="editor" maxlength="2200" style="outline: none;height: 625px;background-color: white;resize: none;border: none;margin-top: 75px;font-size: 16px;font-family: 'Roboto Thin', 'Helvetica Neue',sans-seriff;font-weight: 400;width: 375px;letter-spacing: normal;padding:10px 0px 11px 8px;border-radius: 10px;" autocapitalize="none" spellcheck="true"  placeholder="Tap here to writing."></textarea>
+<div style="position: relative;width: 380px;height: 630px;margin-left: auto;margin-right: auto;"><textarea id="editor" maxlength="2200" style="outline: none;height: 625px;background-color: white;resize: none;border: none;margin-top: 75px;font-size: 16px;font-family: 'Roboto Thin', 'Helvetica Neue',sans-seriff;font-weight: 400;width: 375px;letter-spacing: normal;padding:10px 0px 11px 8px;border-radius: 10px;" autocapitalize="none" spellcheck="true"  placeholder="Tap here to writing."></textarea>
 
     <div><span>Characters&nbsp;&nbsp; : &nbsp;</span><span id="charCount">0</span><span>&nbsp;/ 2200</span></div>
     <div><span>Lines Used &nbsp;: &nbsp;</span><span id="lineCount">1</span></div>
     <div><span>Hash Count : &nbsp;</span><span id="hashTagsCount">0<span>&nbsp;/ 30</span></span></div>
 </div>
 
+    <div class="tagname" id="tag-name" style="">
+
+</div>
+
+
+
 </div>
 
 
 
 <script type="text/javascript">
+
+    document.getElementById("tag-name").style.display="none";
 
 var fonts={
 
@@ -327,6 +358,7 @@ function insertAtCaret(areaId, text) {
 }
 
 div.onkeypress = function(evt) {
+
     evt = evt || window.event;
     var charCode = (typeof evt.which == "undefined") ? evt.keyCode : evt.which;
     var charStr = String.fromCharCode(charCode);
@@ -424,12 +456,169 @@ function translateClick (char,json)
     return character;
 }
 
-div.onkeyup=function () {
+function getCaretPosition(ctrl) {
+    var start, end;
+    if (ctrl.setSelectionRange) {
+        start = ctrl.selectionStart;
+        end = ctrl.selectionEnd;
+    } else if (document.selection && document.selection.createRange) {
+        var range = document.selection.createRange();
+        start = 0 - range.duplicate().moveStart('character', -100000);
+        end = start + range.text.length;
+    }
+    return {
+        start: start,
+        end: end
+    }
+}
+
+function ReturnWord(text, caretPos) {
+    var index = text.indexOf(caretPos);
+    var preText = text.substring(0, caretPos);
+    if (preText.indexOf(" ") > 0) {
+        var words = preText.split(" ");
+        return words[words.length - 1]; //return last word
+    }
+    else {
+        return preText;
+    }
+}
+
+function AlertPrevWord() {
+    var text = document.getElementById("editor");
+    var caretPos = GetCaretPosition(text)
+    var word = ReturnWord(text.value, caretPos);
+    if (word != null) {
+        return word;
+    }
+    else{
+        return "";
+    }
+
+}
+
+function GetCaretPosition(ctrl) {
+    var CaretPos = 0;   // IE Support
+    if (document.selection) {
+        ctrl.focus();
+        var Sel = document.selection.createRange();
+        Sel.moveStart('character', -ctrl.value.length);
+        CaretPos = Sel.text.length;
+    }
+    // Firefox support
+    else if (ctrl.selectionStart || ctrl.selectionStart === '0')
+        CaretPos = ctrl.selectionStart;
+    return (CaretPos);
+}
+
+div.onkeyup=function (event) {
 
     document.getElementById('charCount').innerHTML=countCharactersInTextArea(document.getElementById('editor'));
     document.getElementById('lineCount').innerHTML=countLineNumberInTextArea(document.getElementById('editor'));
     document.getElementById('hashTagsCount').innerHTML=hashTagCountInGivenText(document.getElementById('editor').value);
+    document.getElementById("tag-name").innerHTML="";
+    if(event.key.length<2 || event.key==="Backspace") {
+        var tagName=AlertPrevWord();
+        if(tagName[0]==="@"){
 
+            let tagNameRegex = /^@[^@#]+$/g;
+            if(tagName.length>2 && tagName.match(tagNameRegex)!==null){
+
+                var textParam=tagName.slice(1,tagName.length).trim().toLowerCase();
+
+                // document.getElementById("tag-name").style.marginTop=getCaretCoordinates().y+"px";
+                document.getElementById("tag-name").style.display="";
+
+                var url="https://www.instagram.com/web/search/topsearch/?context=user&query="+encodeURI(textParam)+"&rank_token=0.7700473304112787&include_reel=true";
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+
+                        var tagnameDiv=document.getElementById("tag-name");
+                        var jsonObject=JSON.parse(this.responseText);
+                        var usersArray=jsonObject.users;
+                        console.log(usersArray);
+
+                        for(let p=0;p<usersArray.length;p++){
+
+                            var positionObject=usersArray[p];
+
+                            if(positionObject.hasOwnProperty('user')) {
+                                var userObject = positionObject.user;
+                                let span = document.createElement("span");
+                                let usernameText = document.createTextNode(userObject.username);
+                                span.appendChild(usernameText);
+
+                                let usernameDiv = document.createElement("div");
+                                usernameDiv.setAttribute("style", "margin-top: 6px;font-weight: 600;");
+
+                                if (userObject.is_verified) {
+
+                                    let verifiedImage = document.createElement("img");
+                                    verifiedImage.setAttribute("src", "/hackeroverflow/images/verified.png");
+                                    verifiedImage.setAttribute("style", "height: 10px;width: 10px;margin-left: 5px;");
+                                    usernameDiv.appendChild(span);
+                                    usernameDiv.appendChild(verifiedImage);
+
+                                } else {
+
+                                    usernameDiv.appendChild(span);
+
+                                }
+
+                                let fullnameDiv = document.createElement("div");
+                                fullnameDiv.setAttribute("style", "color: #7E7E7E;font-weight: 400;");
+                                let fullnameText = document.createTextNode(userObject.full_name);
+                                fullnameDiv.appendChild(fullnameText);
+
+                                let rightElement = document.createElement("div");
+                                rightElement.appendChild(usernameDiv);
+                                rightElement.appendChild(fullnameDiv);
+
+                                let profileImage = document.createElement("img");
+                                profileImage.setAttribute("src", decodeURIComponent(userObject.profile_pic_url));
+                                profileImage.setAttribute("style", "height: 30px;width: 30px;border-radius: 20px;float: right;margin-top: 10px;");
+
+                                let leftElement = document.createElement("div");
+                                leftElement.appendChild(profileImage);
+
+                                let rowMainDiv = document.createElement("div");
+                                rowMainDiv.setAttribute("style", "width: inherit;height: 50px;display: grid;\n" +
+                                    "grid-template-columns: 50px 195px;grid-column-gap: 13px;border-bottom: #D6D6D6 1px solid;");
+                                rowMainDiv.appendChild(leftElement);
+                                rowMainDiv.appendChild(rightElement);
+
+                                tagnameDiv.appendChild(rowMainDiv);
+                            }
+                            document.getElementById("editor").focus();
+
+                        }
+
+
+                    }
+                };
+                xhttp.open("GET", url, true);
+                xhttp.send();
+            }
+
+
+
+        }
+    }
+}
+
+function getCaretCoordinates() {
+
+    var sel = window.getSelection();
+    var range = sel.getRangeAt(0);
+    var div = document.createElement("span");
+    div.setAttribute("id","created");
+    range.insertNode(div);
+    var el=document.getElementById('created');
+    var x = el.offsetLeft, y = el.offsetTop-550;
+    el.remove();
+
+    return {x:x,y:y};
 
 }
 
@@ -446,6 +635,26 @@ function countLineNumberInTextArea(element) {
     return noOfLines.length;
 
 }
+
+// function caretPos(el)
+// {
+//     var pos = 0;
+//     // IE Support
+//     if (document.selection)
+//     {
+//         el.focus ();
+//         var Sel = document.selection.createRange();
+//         var SelLength = document.selection.createRange().text.length;
+//         Sel.moveStart ('character', -el.value.length);
+//         pos = Sel.text.length - SelLength;
+//     }
+//     // Firefox support
+//     else if (el.selectionStart || el.selectionStart === '0')
+//         pos = el.selectionStart;
+//
+//     return pos;
+//
+// }
 
 function hashTagCountInGivenText(text) {
 
@@ -473,6 +682,7 @@ function hashTagCountInGivenText(text) {
 
     return hashTags;
 }
+
 
 </script>
 
