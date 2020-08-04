@@ -571,7 +571,7 @@ function instaAjaxCall(tagName){
     var textParam=tagName.slice(1,tagName.length).trim().toLowerCase();
 
     document.getElementById("tag-name").style.display="";
-    document.getElementById("tag-name").innerHTML="<center><img src='/hackeroverflow/images/loading.svg' style='height: 100px;width: 100px;margin-top: 100px;'></center>";
+    document.getElementById("tag-name").innerHTML="<center><img src='/igcaptions/hackeroverflow/images/loading.svg' style='height: 100px;width: 100px;margin-top: 100px;'></center>";
 
     var url="https://www.instagram.com/web/search/topsearch/?context=user&query="+encodeURI(textParam)+"&rank_token=0.7700473304112787&include_reel=true";
     xhttp = new XMLHttpRequest();
