@@ -56,7 +56,8 @@
 </div>
 
 <div style="position: absolute;width: 380px;height: 630px;margin-left: auto;margin-right: auto;"><textarea id="editor" maxlength="2200" style="outline: none;height: 625px;background-color: white;resize: none;border: none;margin-top: 75px;font-size: 16px;font-family: 'Roboto Thin', 'Helvetica Neue',sans-seriff;font-weight: 400;width: 375px;letter-spacing: normal;padding:10px 0px 11px 8px;border-radius: 10px;" autocapitalize="none" spellcheck="true"  placeholder="Tap here to writing."></textarea>
-
+<span><button onclick="document.getElementById('editor').select();document.execCommand('copy');document.getElementById('editor').blur();">COPY</button>
+<button onclick="document.getElementById('editor').value='';">FORMAT</button></span>
     <div><span>Characters&nbsp;&nbsp; : &nbsp;</span><span id="charCount">0</span><span>&nbsp;/ 2200</span></div>
     <div><span>Lines Used &nbsp;: &nbsp;</span><span id="lineCount">1</span></div>
     <div><span>Hash Count : &nbsp;</span><span id="hashTagsCount">0<span>&nbsp;/ 30</span></span></div>
@@ -158,7 +159,38 @@ function getInputSelection(el) {
 
 function replaceSelectedText(el, text) {
   var sel = getInputSelection(el), val = el.value;
-  let newText = translateSelectRange(text);
+  var text2=text.split("\n");
+
+    var newText = "";
+    var newTextArrayToJoin=[];
+    var tagNameRegex = /^@[^@#]+$/g;
+  for(var t=0;t<text2.length;t++){
+
+      var spaceseparate=text2[t].split(" ");
+      var spaceArrayToJoin=[];
+      var spaceJoinString="";
+      for(var s=0;s<spaceseparate.length;s++){
+
+          if(spaceseparate[s]===""){
+                spaceArrayToJoin.push("");
+          }
+          else if(spaceseparate[s].match(tagNameRegex)){
+              spaceArrayToJoin.push(spaceseparate[s]);
+          }
+          else{
+              spaceArrayToJoin.push(translateSelectRange(spaceseparate[s]));
+          }
+
+      }
+
+      spaceJoinString=spaceArrayToJoin.join(" ");
+      newTextArrayToJoin.push(spaceJoinString);
+
+  }
+
+  newText=newTextArrayToJoin.join("\n");
+  console.log("New Text : "+newText);
+
   console.log(sel.start+" : "+sel.end);
   el.value = val.slice(0, sel.start) + newText + val.slice(sel.end);
     el.focus();
@@ -172,7 +204,7 @@ function replaceSelectedText(el, text) {
 function translateSelectRange(text) {
 
   var newtext="";
-  text=[...text];
+  var text=[...text];
   for (x=0;x<text.length;x++) {
 
       var char = text[x];
@@ -217,11 +249,11 @@ if(fontStyle["STATUS"]["containsall"][2] === "s") {
         if (fontStyle["STATUS"]["notcontains"].includes(identity)) {
 
             if (/[A-Z]/.test(normalChar)) {
-                diff = "𝖠".codePointAt(0) - "A".codePointAt(0);
+                diff = "A".codePointAt(0) - "A".codePointAt(0);
             } else if (/[a-z]/.test(normalChar)) {
-                diff = "𝖺".codePointAt(0) - "a".codePointAt(0);
+                diff = "a".codePointAt(0) - "a".codePointAt(0);
             } else if (/[0-9]/.test(normalChar)) {
-                diff = "𝟢".codePointAt(0) - "0".codePointAt(0);
+                diff = "0".codePointAt(0) - "0".codePointAt(0);
             }
             newchar = String.fromCodePoint(normalChar.codePointAt(0) + diff);
 
@@ -262,11 +294,11 @@ else{
             if (fontStyle["STATUS"]["notcontains"].includes(identity)) {
 
                 if (/[A-Z]/.test(normalChar)) {
-                    diff = "𝖠".codePointAt(0) - "A".codePointAt(0);
+                    diff = "A".codePointAt(0) - "A".codePointAt(0);
                 } else if (/[a-z]/.test(normalChar)) {
-                    diff = "𝖺".codePointAt(0) - "a".codePointAt(0);
+                    diff = "a".codePointAt(0) - "a".codePointAt(0);
                 } else if (/[0-9]/.test(normalChar)) {
-                    diff = "𝟢".codePointAt(0) - "0".codePointAt(0);
+                    diff = "0".codePointAt(0) - "0".codePointAt(0);
                 }
                 newchar = String.fromCodePoint(normalChar.codePointAt(0) + diff);
 
@@ -414,11 +446,11 @@ function translateClick (char,json)
         } else if (/[A-Za-z0-9]/.test(char)) {
 
             if (/[A-Z]/.test(char)) {
-                diff = "𝖠".codePointAt(0) - "A".codePointAt(0);
+                diff = "A".codePointAt(0) - "A".codePointAt(0);
             } else if (/[a-z]/.test(char)) {
-                diff = "𝖺".codePointAt(0) - "a".codePointAt(0);
+                diff = "a".codePointAt(0) - "a".codePointAt(0);
             } else if (/[0-9]/.test(char)) {
-                diff = "𝟢".codePointAt(0) - "0".codePointAt(0);
+                diff = "0".codePointAt(0) - "0".codePointAt(0);
             }
             character = String.fromCodePoint(char.codePointAt(0) + diff);
         } else {
@@ -446,11 +478,11 @@ function translateClick (char,json)
             } else if (/[A-Za-z0-9]/.test(char)) {
 
                 if (/[A-Z]/.test(char)) {
-                    diff = "𝖠".codePointAt(0) - "A".codePointAt(0);
+                    diff = "A".codePointAt(0) - "A".codePointAt(0);
                 } else if (/[a-z]/.test(char)) {
-                    diff = "𝖺".codePointAt(0) - "a".codePointAt(0);
+                    diff = "a".codePointAt(0) - "a".codePointAt(0);
                 } else if (/[0-9]/.test(char)) {
-                    diff = "𝟢".codePointAt(0) - "0".codePointAt(0);
+                    diff = "0".codePointAt(0) - "0".codePointAt(0);
                 }
                 character = String.fromCodePoint(char.codePointAt(0) + diff);
             } else {
@@ -482,7 +514,7 @@ function getCaretPosition(ctrl) {
 function ReturnWord(text, caretPos) {
     var index = text.indexOf(caretPos);
     var preText = text.substring(0, caretPos);
-    if (preText.indexOf(" ") >= 0 || preText.indexOf("\n")>0) {
+    if (preText.indexOf(" ") >= 0 || preText.indexOf("\n")>=0) {
         var words = preText.split(/[ |\n]/);
         return words[words.length - 1]; //return last word
     }
@@ -545,6 +577,8 @@ div.onkeyup=function (event) {
 
             }
 
+
+
         }
     }
 }
@@ -570,8 +604,15 @@ function instaAjaxCall(tagName){
 
     var textParam=tagName.slice(1,tagName.length).trim().toLowerCase();
 
+    // document.getElementById("tag-name").style.marginTop=getCaretCoordinates().y+"px";
+    // console.log(getCaretCoordinates());
     document.getElementById("tag-name").style.display="";
     document.getElementById("tag-name").innerHTML="<center><img src='/igcaptions/hackeroverflow/images/loading.svg' style='height: 100px;width: 100px;margin-top: 100px;'></center>";
+
+    // if(xhttp!==null){
+    //     xhttp.abort();
+    //     xhttp=null;
+    // }
 
     var url="https://www.instagram.com/web/search/topsearch/?context=user&query="+encodeURI(textParam)+"&rank_token=0.7700473304112787&include_reel=true";
     xhttp = new XMLHttpRequest();
@@ -647,6 +688,20 @@ function instaAjaxCall(tagName){
 
 }
 
+// function getCaretCoordinates() {
+//
+//     var sel = window.getSelection();
+//     var range = sel.getRangeAt(0);
+//     var div = document.createElement("div");
+//     div.setAttribute("id","created");
+//     range.insertNode(div);
+//     var el=document.getElementById('created');
+//     var x = el.offsetLeft, y = el.offsetTop;
+//     el.remove();
+//
+//     return {x:x,y:y};
+//
+// }
 
 function countCharactersInTextArea(element) {
 
@@ -661,7 +716,37 @@ function countLineNumberInTextArea(element) {
     return noOfLines.length;
 
 }
-	
+
+// function caretPos(el)
+// {
+//     var pos = 0;
+//     // IE Support
+//     if (document.selection)
+//     {
+//         el.focus ();
+//         var Sel = document.selection.createRange();
+//         var SelLength = document.selection.createRange().text.length;
+//         Sel.moveStart ('character', -el.value.length);
+//         pos = Sel.text.length - SelLength;
+//     }
+//     // Firefox support
+//     else if (el.selectionStart || el.selectionStart === '0')
+//         pos = el.selectionStart;
+//
+//     return pos;
+//
+// }
+
+    function delay(callback, ms) {
+        var timer = 0;
+        return function() {
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
 
 function hashTagCountInGivenText(text) {
 
