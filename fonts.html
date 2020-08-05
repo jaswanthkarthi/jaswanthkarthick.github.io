@@ -2,7 +2,7 @@
 <html onclick="document.getElementById('tag-name').style.display='none';">
 <head>
 	<meta charset="UTF-8">
-    <script type="text/javascript" src="/igcaptions/hackeroverflow/js/coordinates.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="/hackeroverflow/js/coordinates.js" charset="UTF-8"></script>
 	<title></title>
 
     <style>
@@ -29,6 +29,25 @@
             position: relative;
         }
 
+        #editor::selection {
+            background: rgba(141, 231, 128, 0.99);
+        }
+        #editor::-moz-selection {
+            background: rgba(141, 231, 128, 0.99);
+        }
+        #main-button{
+
+        }
+
+        .highlight{
+
+            height: 30px;
+            width: 100px;
+            background-color: rgba(0, 0, 0, 0.6);
+            position: absolute;
+
+        }
+
     </style>
 
 </head>
@@ -36,7 +55,7 @@
 <div style="position: absolute;">
 <label>Choose a font : </label>
 <div>
-    <button onclick="if(document.getElementById('fontslet').style.display==='none'){document.getElementById('fontslet').style.display='';}else{document.getElementById('fontslet').style.display='none'}document.getElementById('editor').focus()">show text styles</button>
+    <button id="main-button" onclick="if(document.getElementById('fontslet').style.display==='none'){document.getElementById('fontslet').style.display='';}else{document.getElementById('fontslet').style.display='none'}document.getElementById('editor').focus()">show text styles</button>
 <div id="fontslet" data-font="NORMAL" style="display: none;">
 
     <button value="NORMAL" onclick="changeValue(this)">Normal text</button>
@@ -65,9 +84,11 @@
 
     <div class="tagname" id="tag-name" style="">
 
+
+
 </div>
 
-
+    <div class="highlight" id="high"></div>
 
 </div>
 
@@ -150,7 +171,7 @@ function getInputSelection(el) {
       }
     }
   }
-
+alert(start+" : "+end);
   return {
     start: start,
     end: end
@@ -349,7 +370,6 @@ else{
          var start = txtarea.selectionStart;
          var finish = txtarea.selectionEnd;
          var sel = txtarea.value.substring(start, finish);
-
 
        replaceSelectedText(document.getElementById("editor"),sel);
 
@@ -550,6 +570,30 @@ function GetCaretPosition(ctrl) {
     return (CaretPos);
 }
 
+function deselected(){
+
+    document.getElementById('main-button').style.display='';
+    // document.getElementById('fontslet').style.display='';
+
+}
+
+
+
+div.onselect=function(event){
+
+
+
+    document.getElementById('main-button').style.display='none';
+    document.getElementById('fontslet').style.display='none';
+    document.getElementById('high').style.marginLeft=(getCaretCoordinates(this, this.selectionEnd).left+10)+"px";
+    document.getElementById('high').style.marginTop=(getCaretCoordinates(this, this.selectionEnd).top+70)+"px";
+
+
+}
+
+     div.onclick    = div.onkeydown    = deselected;
+
+
 div.onkeyup=function (event) {
 
     document.getElementById('charCount').innerHTML=countCharactersInTextArea(document.getElementById('editor'));
@@ -607,7 +651,7 @@ function instaAjaxCall(tagName){
     // document.getElementById("tag-name").style.marginTop=getCaretCoordinates().y+"px";
     // console.log(getCaretCoordinates());
     document.getElementById("tag-name").style.display="";
-    document.getElementById("tag-name").innerHTML="<center><img src='/igcaptions/hackeroverflow/images/loading.svg' style='height: 100px;width: 100px;margin-top: 100px;'></center>";
+    document.getElementById("tag-name").innerHTML="<center><img src='/hackeroverflow/images/loading.svg' style='height: 100px;width: 100px;margin-top: 100px;'></center>";
 
     // if(xhttp!==null){
     //     xhttp.abort();
