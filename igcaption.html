@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,700,900" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=0, shrink-to-fit=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="/igcaptions/hackeroverflow/js/coordinates.js" charset="UTF-8"></script>
     <title>summa</title>
@@ -11,166 +12,223 @@
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900');
 
-        html,body{
 
-            margin: 0;
+@keyframes fadein {
+    from {top: 0; opacity: 0;}
+    to {top: 20px; opacity: 1;}
+}
 
-            overflow: hidden;
-        }
+@keyframes fadeout {
+    from {top:20px; opacity: 1;}
+    to {top: 0; opacity: 0;}
+}
 
-        html{
-            background-color: #F2F2F6;
-        }
+.toast-body{
+color: white;
+    font-size: 14px;
+    margin-top: 5px;
+    word-break: break-word;
+}
 
-        .background-wave{
-            z-index: -1;
-            position: absolute;
-        }
+#toast.show {
+    visibility: visible;
+    /*-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;*/
+    /*animation: fadein 0.5s, fadeout 0.5s 2.5s;*/
+    /*animation-fill-mode: forwards;*/
+}
 
-        #main{
-            height: 100vh;
-            width: 375px;
-            margin: auto;
-            z-index: 5;
-            display: grid;
-            grid-template-rows: 75px 300px 135px;
-            grid-row-gap: 20px;
+.toast-header{
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
 
-        }
+.toast-img{
+    display: flex;
+    justify-content: center;
 
-        .heading-bar{
-            font-family: Montserrat-Bold;
-            font-size: 20px;
-            color: #FFFFFF;
-            text-align: center;
-            top: 30px;
-            position: relative;
+}
+
+.toast-position{
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: auto;
+    width: 300px;
+    height: max-content;
+    font-family: 'Montserrat',Roboto, Helvetica, sans-serif;
+    margin-top: 65px;
+}
+
+html,body{
+
+    margin: 0;
+
+overflow-x: hidden;
+    position: relative;
+    height: 100%;
+}
+
+html{
+    background-color: #F2F2F6;
+}
+
+.background-wave{
+    z-index: -1;
+    position: absolute;
+}
+
+#main{
+
+    width: 375px;
+    margin: auto;
+    z-index: 5;
+    display: grid;
+    grid-template-rows: 75px 300px 135px;
+    grid-row-gap: 20px;
+
+}
+
+.heading-bar{
+    font-family: 'Montserrat',Roboto, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #FFFFFF;
+    text-align: center;
+    top: 30px;
+    position: relative;
 
 
-        }
+}
 
-        .editorbox{
+.editorbox{
 
-            height: 100%;
-            width: inherit;
-            background: #ffffff;
-            border: 1px solid rgba(205,208,227,0.30);
-            border-radius: 24px;
+    height: 100%;
+    width: inherit;
+    background: #ffffff;
+    border: 1px solid rgba(205,208,227,0.30);
+    border-radius: 24px;
 
-        }
+}
 
-        #fontChosen{
-            background-color: #0000AF;
-            border-radius: 4px;
-            font-family: Montserrat-Medium;
-            font-size: 16px;
-            color: #FFFFFF;
-            border: #0000AF;
-            padding-left: 18px;
-            padding-right: 18px;
-            max-width: 150px;
+#fontChosen{
+    background-color: #0000AF;
+    border-radius: 4px;
+    font-family: 'Montserrat',Roboto, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #FFFFFF;
+    border: #0000AF;
+    padding-left: 18px;
+    padding-right: 18px;
+    max-width: 150px;
 
-        }
+}
 
-        .editor-header-text{
+.editor-header-text{
 
-            font-family: Montserrat-Medium;
-            font-size: 16px;
-            color: #0000AF;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+    font-family: 'Montserrat',Roboto, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #0000AF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 
-        }
+}
 
-        .droparrow{
+.droparrow{
 
-            background: #F0EDED;
-            border-radius: 4px;
-            padding-left: 9px;
-            padding-right: 11px;
-            padding-top: 6px;
-            padding-bottom: 6px;
+    background: #F0EDED;
+    border-radius: 4px;
+    padding-left: 9px;
+    padding-right: 11px;
+    padding-top: 6px;
+    padding-bottom: 6px;
 
-        }
+}
 
-        .editor-header{
+.editor-header{
 
-            margin-top: 20px;
-            margin-left: 20px;
-            display: grid;
-            grid-template-columns: 94px 190px;
-            grid-column-gap: 10px;
-            width: 99%;
-            height: 30px;
+    margin-top: 20px;
+    margin-left: 20px;
+    display: grid;
+    grid-template-columns: 94px 190px;
+    grid-column-gap: 10px;
+    width: 99%;
+    height: 30px;
 
-        }
+}
 
-        .textarea{
+.textarea{
 
-            margin-top: 12px;
-            width: 87%;
-            height: 435px;
-            margin-left: 20px;
-            resize: none;
-            border: none;
-            outline: none;
-            font-family: 'Roboto Thin', 'Helvetica Neue',sans-seriff;
-            font-size: 16px;
+    margin-top: 12px;
+    width: 87%;
+    height: 435px;
+    margin-left: 20px;
+    resize: none;
+    border: none;
+    outline: none;
+    font-family: 'Roboto Thin', 'Helvetica Neue',sans-seriff;
+    font-size: 16px;
 
-        }
+}
 
-        .editorbox-footer{
+.editorbox-footer{
 
-            opacity: 0.5;
-            font-family: Montserrat-Medium;
-            font-size: 14px;
-            color: #0000AF;
-            margin-top: 3px;
+    opacity: 0.5;
+    font-family: 'Montserrat',Roboto, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #0000AF;
+    margin-top: 3px;
 
-        }
+}
 
-        .footer{
+.footer{
 
-            display: grid;
-            grid-template-rows: 60px 50px;
-            grid-row-gap: 15px;
+    display: grid;
+    grid-template-rows: 60px 50px;
+    grid-row-gap: 15px;
 
-        }
+}
 
-        .footer-text{
+.footer-text{
 
-            font-family: Montserrat-SemiBold;
-            font-size: 14px;
-            color: #0000AF;
-            text-align: right;
+    font-family: 'Montserrat',Roboto, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #0000AF;
+    text-align: right;
 
-        }
+}
 
-        .copybutton{
+.copybutton{
 
-            background: #0000AF;
-            border-radius: 10px;
-            font-family: Montserrat-Bold;
-            font-size: 16px;
-            color: #FFFFFF;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+    background: #0000AF;
+    border-radius: 10px;
+    font-family: 'Montserrat',Roboto, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: copy;
 
-        }
+}
 
-        .dropdown-content {
+.dropdown-content {
 
-        position: absolute;
-        background-color: #FAFAFF;
-        min-width: 190px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-        margin-top: 30px;
-            max-height: 116px;
-            overflow: scroll;
+    position: absolute;
+    background-color: #FAFAFF;
+    min-width: 190px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    max-height: 116px;
+    overflow: scroll;
+    cursor: pointer;
 
 }
 
@@ -183,27 +241,79 @@
 
 
 .dropdown-content div {
-  color: black;
-  padding: 8px 16px;
-  text-decoration: none;
-  display: block;
-  font-family: 'Roboto Thin', 'Helvetica Neue',sans-seriff;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: 'Montserrat', Roboto, Helvetica, sans-serif;
 }
+
 
 .tagname{
 
     background-color: #FAFAFF;
     height: 257px;
-    width:275px;
     position: absolute;
-    /*border: gray 1px solid;*/
-    box-shadow: 0.4px 0.4px 0.4px 0.4px gray;
-    overflow: scroll;
+    box-shadow: 0 8px 6px -6px #ecefff;
+    overflow-y: scroll;
+    overflow-x: hidden;
     margin-left: 30px;
     border: 2px solid rgba(205,208,227,0.30);
     border-radius: 10px;
+    min-width: 275px;
+    max-width: 305px;
 
 }
+
+        .tag-width{
+
+            min-width: 101%;
+            max-width: 102%;
+            cursor: pointer;
+        }
+
+
+.hashname{
+
+    background-color: #FAFAFF;
+    height: 257px;
+    position: absolute;
+    box-shadow: 0 8px 6px -6px #ecefff;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-left: 30px;
+    border: 2px solid rgba(205,208,227,0.30);
+    border-radius: 10px;
+    min-width: 275px;
+    max-width: 305px;
+
+}
+
+.hash-width{
+
+    min-width: 101%;
+    max-width: 102%;
+    cursor: pointer;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 17px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+        .container{
+            font-size: 11px;
+            color: white;
+            display: inline-flex;
+        }
 
     </style>
 
@@ -219,8 +329,9 @@
 <!--</div>-->
 
 
-<img src="/igcaptions/hackeroverflow/images/rect-500.svg" class="background-wave" id="bg-wave">
-
+<div class="background-wave" id="width-img"><img src="/igcaptions/hackeroverflow/images/rect-500.svg" id="bgimg-wave"></div>
+<div id="toast" style="position: absolute;width: 100%;height: 40px;z-index: 1"></div>
+<div id="main2"></div>
 <section class="mainbox" id="main">
 
     <div class="heading-bar">IGCAPTION</div>
@@ -232,8 +343,8 @@
             <div class="editor-header-text">Text Styles :</div>
 
             <div style="display: grid;grid-template-columns: 150px 30px;grid-column-gap: 10px;">
-            <button id="fontChosen" style="outline: none" data-font="NORMAL">Normal</button>
-            <div class="droparrow" onclick="fun(this)" data-dropped="false" id="font">
+            <button id="fontChosen" style="outline: none" data-font="NORMAL" data-info-normal="true">Normal</button>
+            <div class="droparrow" data-dropped="false" id="font">
                 <svg width="12px" height="7px" viewBox="0 0 12 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
                         <g id="main-page" transform="translate(-881.000000, -126.000000)" stroke="#0000AF" stroke-width="2">
@@ -241,17 +352,19 @@
                         </g>
                     </g>
                 </svg></div>
-                <div class="dropdown-content" id="dropdown-content">
+                <div>
+                <div class="dropdown-content" id="dropdown-content-id">
                     <div data-value="NORMAL" data-font="Normal" onclick="changeValue(this)">Normal &nbsp;(Default)</div>
                     <div data-value="NORMAL_SANS" data-font="Sans" onclick="changeValue(this)">𝖭𝗈𝗋𝗆𝖺𝗅 𝖲𝖺𝗇𝗌</div>
                     <div data-value="BOLD_SANS" data-font="Bold Sans" onclick="changeValue(this)">𝗕𝗼𝗹𝗱 𝗦𝗮𝗻𝘀</div>
                     <div data-value="ITALIC_SANS" data-font="Italic Sans" onclick="changeValue(this)">𝘐𝘵𝘢𝘭𝘪𝘤 𝘚𝘢𝘯𝘴</div>
                     <div data-value="BOLD_ITALIC_SANS" data-font="Boltalic Sans" onclick="changeValue(this)">𝘽𝙤𝙡𝙙 & 𝙄𝙩𝙖𝙡𝙞𝙘 𝙎𝙖𝙣𝙨</div>
                     <div data-value="BUBBLE_TEXT_BLACKED" data-font="Bubble" onclick="changeValue(this)">🅑🅤🅑🅑🅛🅔</div>
-                    <div data-value="SQUARE_TEXT_NORMAL" data-font="Square - 1" onclick="changeValue(this)">🅂🅀🅄🄰🅁🄴 - 1</div>
+                  <div data-value="SQUARE_TEXT_NORMAL" data-font="Square - 1" onclick="changeValue(this)">🅂🅀🅄🄰🅁🄴 - 1</div>
                     <div data-value="SQUARE_TEXT_BLACKED" data-font="Square - 2" onclick="changeValue(this)">🆂🆀🆄🅰🆁🅴 - 2</div>
                     <div data-value="MONOSPACE_TEXT" data-font="Monospace" onclick="changeValue(this)">𝙼𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎</div>
                     <div data-value="SPACING_TEXT" data-font="Spacer" onclick="changeValue(this)">Ｓｐａｃｅｒ</div>
+                </div>
                 </div>
             </div>
 
@@ -287,7 +400,7 @@
             </div>
         </center>
 
-        <div class="editorbox-footer">
+        <div class="editorbox-footer" id="mobile-view">
             <center>Type “:” to get emoji suggestions</center>
 
         </div>
@@ -300,27 +413,36 @@
         <div class="footer-text" style="margin-top: 3px;"><span id="charCount">0</span> / 2200 Characters</div>
         <div class="footer-text" style="margin-top: 3px;"><span id="hashTagsCount">0</span> / 30 Hastags</div>
     </div>
-        <div class="copybutton">
+        <div class="copybutton" onclick="copyToClipBoard(this);">
 
             COPY & CONVERT
 
         </div></div>
 
     <div class="tagname" id="tag-name" style=""></div>
+    <div class="hashname" id="hash-name" style=""></div>
 </section>
 
 
 
 <script>
 
+    document.getElementById('editor').onscroll=function(event){
+        document.getElementById("tag-name").innerHTML="";
+        document.getElementById("tag-name").style.display="none";
+    };
+
+    document.getElementById('dropdown-content-id').style.display='none';
+
     var fonts;
     var xhttp =null;
+    var hashTagWarning=false;
 
     var div=document.getElementById('editor');
 
     window.onload=async function () {
 
-        var url="https://jaswanthponnusamy.github.io/igcaptions/hackeroverflow/json/fonts.json";
+        var url="http://192.168.1.6:8080/igcaptions/hackeroverflow/json/fonts.json";
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
@@ -337,42 +459,99 @@
 
     }
 
+    $(window).blur(function(e) {
+        document.getElementById("tag-name").innerHTML="";
+        document.getElementById("tag-name").style.display="none";
+    });
+
+
+
     $(document).ready(function() {
 
-        document.getElementById('dropdown-content').style.display='none';
         document.getElementById('tag-name').style.display='none';
+        document.getElementById('hash-name').style.display='none';
         var firstRow = 50;
         var secondRow = $(window).height() - 120 - 50 - 20 - 20 - 25;
         var thirdRow = 120;
         document.getElementById("main").style.gridTemplateRows = firstRow + "px " + secondRow + "px " + thirdRow + "px";
         document.getElementById("editor").style.height=(secondRow-168)+"px";
-console.log(secondRow);
-        if ($(window).width() < 415) {
-            document.getElementById('main').style.width = $(window).width() - 30 + "px";
 
+        if ($(window).width() < 1000) {
+
+            document.getElementById('mobile-view').innerHTML="<center>Made with ❤️ Contribute 🙏 thank U</center>"
+
+        }
+
+
+        if ($(window).width() < 405) {
+            document.getElementById('main').style.width = ($(window).width() - 30) + "px";
+            document.getElementById('tag-name').style.minWidth = ($(window).width() - 30-100) + "px";
+            document.getElementById('tag-name').style.maxWidth = ($(window).width() - 30-80) + "px";
+
+            document.getElementById('hash-name').style.minWidth = ($(window).width() - 30-100) + "px";
+            document.getElementById('hash-name').style.maxWidth = ($(window).width() - 30-80) + "px";
         }
 
         if($(window).height()<400){
-            document.getElementById('bgimg-wave').setAttribute("src","/hackeroverflow/images/rect-200.svg");
+            document.getElementById('bgimg-wave').setAttribute("src","/igcaptions/hackeroverflow/images/rect-200.svg");
         }
         else if($(window).height()<600){
-            document.getElementById('bgimg-wave').setAttribute("src","/hackeroverflow/images/rect-300.svg")
+            document.getElementById('bgimg-wave').setAttribute("src","/igcaptions/hackeroverflow/images/rect-300.svg")
         }
         else if($(window).height()<750){
-            document.getElementById('bgimg-wave').setAttribute("src","/hackeroverflow/images/rect-400.svg")
+            document.getElementById('bgimg-wave').setAttribute("src","/igcaptions/hackeroverflow/images/rect-400.svg")
         }
         else{
-            document.getElementById('bgimg-wave').setAttribute("src","/hackeroverflow/images/rect-500.svg")
+            document.getElementById('bgimg-wave').setAttribute("src","/igcaptions/hackeroverflow/images/rect-500.svg")
         }
+        document.getElementById('width-img').style.width=$(window).width()+"px";
     });
 
+    $(document).on("click", function(event){
+        if(event.target.getAttribute("class")==="droparrow" || $('.droparrow').has(event.target).length>0){
+            $(".dropdown-content").slideToggle();
+            document.getElementById('font').setAttribute("data-dropped","true");
+            document.getElementById('editor').focus();
+        }
+        else{
+            $(".dropdown-content").slideUp();
+            if(document.getElementById('font').getAttribute("data-dropped")==="true") {
+                document.getElementById('editor').focus();
+                document.getElementById('font').setAttribute("data-dropped","false");
+            }
+        }
+
+        if(event.target.getAttribute("class")==="tagname" || $('.tagname').has(event.target).length>0){
+                return;
+        }
+        else {
+            document.getElementById("tag-name").innerHTML="";
+            document.getElementById("tag-name").style.display="none";
+        }
+
+        if(event.target.getAttribute("class")==="hashname" || $('.hashname').has(event.target).length>0){
+            return;
+        }
+        else {
+            document.getElementById("hash-name").innerHTML="";
+            document.getElementById("hash-name").style.display="none";
+        }
+
+    });
+
+
     $(window).resize(function() {
+
+        document.getElementById('tag-name').style.marginTop=(getCaretCoordinates(document.getElementById('editor'), document.getElementById('editor').selectionEnd).top+185-document.getElementById('editor').scrollTop)+"px";
+        document.getElementById('hash-name').style.marginTop=(getCaretCoordinates(document.getElementById('editor'), document.getElementById('editor').selectionEnd).top+185-document.getElementById('editor').scrollTop)+"px";
 
         var firstRow=50;
         var secondRow=$(window).height()-120-50-20-20-25;
         var thirdRow=120;
         document.getElementById("main").style.gridTemplateRows=firstRow+"px "+secondRow+"px "+thirdRow+"px";
         document.getElementById("editor").style.height=(secondRow-168)+"px";
+
+        document.getElementById('width-img').style.width=$(window).width()+"px";
 
         if($(window).width()<415) {
             document.getElementById('main').style.width =$(window).width()-30+"px";
@@ -383,31 +562,22 @@ console.log(secondRow);
         }
 
         if($(window).height()<400){
-            document.getElementById('bgimg-wave').setAttribute("src","/hackeroverflow/images/rect-200.svg");
+            document.getElementById('bgimg-wave').setAttribute("src","/igcaptions/hackeroverflow/images/rect-200.svg");
         }
         else if($(window).height()<600){
-            document.getElementById('bgimg-wave').setAttribute("src","/hackeroverflow/images/rect-300.svg")
+            document.getElementById('bgimg-wave').setAttribute("src","/igcaptions/hackeroverflow/images/rect-300.svg")
         }
         else if($(window).height()<750){
-            document.getElementById('bgimg-wave').setAttribute("src","/hackeroverflow/images/rect-400.svg")
+            document.getElementById('bgimg-wave').setAttribute("src","/igcaptions/hackeroverflow/images/rect-400.svg")
         }
         else{
-            document.getElementById('bgimg-wave').setAttribute("src","/hackeroverflow/images/rect-500.svg")
+            document.getElementById('bgimg-wave').setAttribute("src","/igcaptions/hackeroverflow/images/rect-500.svg")
         }
+
+        document.getElementById('editor').scrollTo(0,getCaretCoordinates(document.getElementById('editor'), document.getElementById('editor').selectionEnd).top);
 
     });
 
-    function fun() {
-
-        if(document.getElementById('dropdown-content').style.display==='none'){
-            document.getElementById('dropdown-content').style.display='block';
-        }
-        else{
-            document.getElementById('dropdown-content').style.display='none';
-        }
-        document.getElementById('editor').focus();
-
-    }
 
     function changeValue(e){
 
@@ -418,7 +588,6 @@ console.log(secondRow);
         var start = txtarea.selectionStart;
         var finish = txtarea.selectionEnd;
         var sel = txtarea.value.substring(start, finish);
-        document.getElementById('dropdown-content').style.display='none';
         replaceSelectedText(document.getElementById("editor"),sel,"selectionReplace");
         document.getElementById('charCount').innerHTML=countCharactersInTextArea(document.getElementById('editor'));
         document.getElementById('hashTagsCount').innerHTML=hashTagCountInGivenText(document.getElementById('editor').value);
@@ -454,14 +623,30 @@ console.log(secondRow);
         }
 
         if(hashTags>30){
-            document.getElementById("alert").innerHTML = "Hashtag limit 30, remove others!";
-            document.getElementById("alert").style.display="";
-            document.getElementById("editor").blur();
-
-            setTimeout(function(){
-                document.getElementById("alert").innerHTML = '';
-                document.getElementById("alert").style.display="none";
-            }, 1000);
+            Toast({
+                header: true,
+                headerMessage: "Warning!",
+                message: "More than 30 HashTags. Disabled Hashtag searches; Delete "+(hashTags-30)+" more hashtags to enable",
+                mainStyle: "background: #FFBD00;border-bottom: 8px solid #FFDE81;",
+                grid: "display: grid;grid-template-columns: 50px 180px 50px;grid-column-gap: 10px;",
+                animation: true,
+                close: true
+            });
+            hashTagWarning=true;
+        }
+        else{
+            if(hashTagWarning){
+                Toast({
+                    header: true,
+                    headerMessage: "Done!",
+                    message: "Now, there are insta valid 30 hashtags. Enabled hashtag insta search",
+                    mainStyle: "background: #41D888;border-bottom: 8px solid #A2ECC5;",
+                    grid: "display: grid;grid-template-columns: 50px 180px 50px;grid-column-gap: 10px;",
+                    animation: true,
+                    close: true
+                });
+            }
+            hashTagWarning=false;
         }
 
         return hashTags;
@@ -811,24 +996,20 @@ var input="";
 
 
 
-    div.onkeyup=function(event){
-        document.getElementById('lineCount').innerHTML=countLineNumberInTextArea(document.getElementById('editor'));
-        document.getElementById('charCount').innerHTML=countCharactersInTextArea(document.getElementById('editor'));
-        document.getElementById('hashTagsCount').innerHTML=hashTagCountInGivenText(document.getElementById('editor').value);
-    }
-
-
-
     inputHandler = function(event) {
+
+        hashTagCountInGivenText(document.getElementById('editor').value);
 
         if(event.inputType==="insertText" || event.inputType==="insertCompositionText") {
 
             if(event.target.value.length<input.length){
                 console.info("delete");
+                insta();
             }
             else if(event.target.value.length===input.length+1){
                 if (event.data===" "){
                     console.info("space");
+                    insta();
                 }
                 else{
                     inp(event.data,true,1);
@@ -844,10 +1025,19 @@ var input="";
             input=event.target.value;
 
         }
+        else if(event.inputType==="deleteContentBackward" || event.inputType==="insertLineBreak"){
+            input=event.target.value;
+            insta();
+        }
         else {
             input=event.target.value;
         }
-        
+
+
+        document.getElementById('lineCount').innerHTML=countLineNumberInTextArea(document.getElementById('editor'));
+        document.getElementById('charCount').innerHTML=countCharactersInTextArea(document.getElementById('editor'));
+        document.getElementById('hashTagsCount').innerHTML=hashTagCountInGivenText(document.getElementById('editor').value);
+
     }
     
     function inp(inputData,oneChar,length) {
@@ -883,10 +1073,12 @@ var input="";
                 replaceSelectedText(document.getElementById('editor'), ch,"swipedText",length);
             }
 
-            return false;
-
         }
 
+        insta();
+    }
+
+    function insta(){
         if(xhttp){
             xhttp.abort();
             xhttp=null;
@@ -894,23 +1086,151 @@ var input="";
         document.getElementById("tag-name").innerHTML="";
         document.getElementById("tag-name").style.display="none";
 
+        document.getElementById("hash-name").innerHTML="";
+        document.getElementById("hash-name").style.display="none";
+
         var tagName=AlertPrevWord();
         console.log(tagName);
-        if(tagName[0]==="@"){
+        if(tagName[0]==="@" || tagName[0]==="#"){
             var tagNameRegex = /^@[^@#]+$/g;
-            if(tagName.length>2 && tagName.match(tagNameRegex)!==null){
-                document.getElementById('tag-name').style.marginTop=(getCaretCoordinates(this, this.selectionEnd).top+185)+"px";
-                instaAjaxCall(tagName);
+            var hashTagRegex = /^#[^@#]+$/g;
+
+            if(document.getElementById("fontChosen").getAttribute("data-font")!=="NORMAL" && (tagName.length===1 || tagName.length===2 || tagName.length===3)){
+
+                if(document.getElementById("fontChosen").getAttribute("data-info-normal")!=="false"){
+
+                    var mainappend=document.createElement("div");
+                    mainappend.setAttribute("style", "margin-top: 10px;");
+
+                    var append=document.createElement("div");
+                    append.setAttribute("style", "display: inline-flex;margin-left: 58px;margin-top: 5px;");
+
+                    var okbutton = document.createElement("button");
+                    okbutton.setAttribute("class", "button");
+                    okbutton.setAttribute("onclick", "changeToNormal()");
+                    okbutton.setAttribute("style", "background-color: white;color: #f44336;");
+                    var okbuttonText = document.createTextNode("Change");
+                    okbutton.appendChild(okbuttonText);
+
+                    var okbutton1 = document.createElement("button");
+                    okbutton1.setAttribute("style", "background-color: white;color: #f44336;margin-left:5px");
+                    okbutton1.setAttribute("onclick", "Close(document.getElementById('toast-checkbox').checked)");
+                    okbutton1.setAttribute("class", "button");
+                    var okbuttonText1 = document.createTextNode("Close");
+                    okbutton1.appendChild(okbuttonText1);
+
+                    var checkboxlbl = document.createElement("div");
+                    checkboxlbl.setAttribute("class", "container");
+                    checkboxlbl.setAttribute("style", "margin-left: 58px;");
+
+                    var checkbox = document.createElement("input");
+                    checkbox.setAttribute("type", "checkbox");
+                    checkbox.setAttribute("style", "margin:0;");
+                    checkbox.setAttribute("id", "toast-checkbox");
+
+                    var span = document.createElement("div");
+                    span.setAttribute("style", "margin-left: 5px;");
+                    var spantxt = document.createTextNode("Don't show again");
+                    span.appendChild(spantxt);
+
+
+                    checkboxlbl.appendChild(checkbox);
+                    checkboxlbl.appendChild(span);
+
+                    append.appendChild(okbutton);
+                    append.appendChild(okbutton1);
+
+                    mainappend.appendChild(checkboxlbl);
+                    mainappend.appendChild(append);
+
+
+                    Toast({header:true,headerMessage:"Info!",message:"Only NORMAL font searches the insta! Change TO 'Normal' Font",mainStyle:"background: #0088D7;border-bottom: 8px solid #81C4EB;",grid:"display: grid;grid-template-columns: 50px 240px;grid-column-gap: 10px;",animation:true,close:false,append:mainappend});
+                    document.getElementById('editor').blur();
+
+                }
+
+            }
+
+
+            if(tagName.length>2 && !hashTagWarning && (tagName.match(tagNameRegex)!==null || tagName.match(hashTagRegex)!==null) && document.getElementById("fontChosen").getAttribute("data-font")==="NORMAL"){
+
+                if(tagName.charAt(0)==="@") {
+                    document.getElementById('tag-name').style.marginTop = (getCaretCoordinates(document.getElementById('editor'), document.getElementById('editor').selectionEnd).top + 185 - document.getElementById('editor').scrollTop) + "px";
+                    instaAjaxCall(tagName);
+                }
+                else{
+                    document.getElementById('hash-name').style.marginTop = (getCaretCoordinates(document.getElementById('editor'), document.getElementById('editor').selectionEnd).top + 185 - document.getElementById('editor').scrollTop) + "px";
+                    hashAjaxCall(tagName);
+                }
             }
         }
     }
+
+
+    function hashAjaxCall(tagName){
+
+        var textParam=tagName.slice(1,tagName.length).trim().toLowerCase();
+
+        document.getElementById("hash-name").style.display="";
+        document.getElementById("hash-name").innerHTML="<center><img src='/igcaptions/hackeroverflow/images/loading.svg' style='height: 100px;width: 100px;margin-top: 100px;'></center>";
+
+        var url="https://www.instagram.com/web/search/topsearch/?context=hashtag&query="+encodeURI(textParam)+"&rank_token=0.7700473304112787&include_reel=true";
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+
+                var hashnameDiv=document.getElementById("hash-name");
+                var jsonObject=JSON.parse(this.responseText);
+                var usersArray=jsonObject.hashtags;
+                document.getElementById("hash-name").innerHTML="";
+
+                for(var p=0;p<usersArray.length;p++){
+
+                    var positionObject=usersArray[p];
+
+                    if(positionObject.hasOwnProperty('hashtag')) {
+                        var hashNameObject = positionObject.hashtag;
+                        var div = document.createElement("div");
+                        div.setAttribute("style", "margin-left: 30px;margin-top: 6px;font-family: Montserrat;font-size: 14px;font-weight: 600;");
+                        var hashnameText = document.createTextNode(hashNameObject.name);
+                        div.appendChild(hashnameText);
+
+                        var mediaCounts = document.createElement("div");
+                        mediaCounts.setAttribute("style", "margin-left: 30px;margin-top: 3px;font-family: Montserrat;font-size: 14px;margin-bottom: 6px;font-weight: 400;opacity: 0.6;");
+                        var noOfPosts = document.createTextNode(hashNameObject.search_result_subtitle);
+                        mediaCounts.appendChild(noOfPosts);
+
+                        var rowMainDiv = document.createElement("div");
+                        rowMainDiv.setAttribute("data-hashname",hashNameObject.name);
+                        rowMainDiv.classList.add("hash-width");
+                        rowMainDiv.setAttribute("onclick","replaceTagname(document.getElementById('editor'),this.getAttribute('data-hashname'),'#')");
+                        rowMainDiv.setAttribute("style", "border-bottom: #D6D6D6 1px solid;");
+                        rowMainDiv.appendChild(div);
+                        rowMainDiv.appendChild(mediaCounts);
+
+                        hashnameDiv.appendChild(rowMainDiv);
+                    }
+                    document.getElementById("editor").focus();
+
+                }
+
+            }
+        };
+        xhttp.open("GET", url, true);
+        xhttp.send();
+
+    }
+
+
+    var timer=0;
+
 
     function instaAjaxCall(tagName){
 
         var textParam=tagName.slice(1,tagName.length).trim().toLowerCase();
 
         document.getElementById("tag-name").style.display="";
-        document.getElementById("tag-name").innerHTML="<center><img src='/hackeroverflow/images/loading.svg' style='height: 100px;width: 100px;margin-top: 100px;'></center>";
+        document.getElementById("tag-name").innerHTML="<center><img src='/igcaptions/hackeroverflow/images/loading.svg' style='height: 100px;width: 100px;margin-top: 100px;'></center>";
 
         var url="https://www.instagram.com/web/search/topsearch/?context=user&query="+encodeURI(textParam)+"&rank_token=0.7700473304112787&include_reel=true";
         xhttp = new XMLHttpRequest();
@@ -933,12 +1253,12 @@ var input="";
                         span.appendChild(usernameText);
 
                         var usernameDiv = document.createElement("div");
-                        usernameDiv.setAttribute("style", "margin-top: 6px;font-family: Montserrat-Bold;");
+                        usernameDiv.setAttribute("style", "margin-top: 6px;font-family: Montserrat-Bold;font-size: 14px;");
 
                         if (userObject.is_verified) {
 
                             var verifiedImage = document.createElement("img");
-                            verifiedImage.setAttribute("src", "/hackeroverflow/images/verified.png");
+                            verifiedImage.setAttribute("src", "/igcaptions/hackeroverflow/images/verified.png");
                             verifiedImage.setAttribute("style", "height: 10px;width: 10px;margin-left: 5px;");
                             usernameDiv.appendChild(span);
                             usernameDiv.appendChild(verifiedImage);
@@ -949,8 +1269,9 @@ var input="";
 
                         }
 
+
                         var fullnameDiv = document.createElement("div");
-                        fullnameDiv.setAttribute("style", "color: #7E7E7E;font-family: Montserrat;font-weight: 500;");
+                        fullnameDiv.setAttribute("style", "color: #7E7E7E;font-family: Montserrat;font-weight: 400;font-size: 14px;margin-top: 2px;margin-bottom: 6px;");
                         var fullnameText = document.createTextNode(userObject.full_name);
                         fullnameDiv.appendChild(fullnameText);
 
@@ -967,9 +1288,10 @@ var input="";
 
                         var rowMainDiv = document.createElement("div");
                         rowMainDiv.setAttribute("data-username",userObject.username);
-                        rowMainDiv.setAttribute("onclick","replaceTagname(document.getElementById('editor'),this.getAttribute('data-username'))");
-                        rowMainDiv.setAttribute("style", "width: inherit;height: 50px;display: grid;\n" +
-                            "grid-template-columns: 50px 195px;grid-column-gap: 13px;border-bottom: #D6D6D6 1px solid;");
+                        rowMainDiv.classList.add("tag-width");
+                        rowMainDiv.setAttribute("onclick","replaceTagname(document.getElementById('editor'),this.getAttribute('data-username'),'@')");
+                        rowMainDiv.setAttribute("style", "display: grid;\n" +
+                            "grid-template-columns: 50px minmax(200px,max-content);grid-column-gap: 13px;border-bottom: #D6D6D6 1px solid;");
                         rowMainDiv.appendChild(leftElement);
                         rowMainDiv.appendChild(rightElement);
 
@@ -987,10 +1309,10 @@ var input="";
     }
     div.addEventListener('input', inputHandler);
 
-    function replaceTagname(el,div) {
+    function replaceTagname(el,div,prefix) {
 
         var sel = getInputSelection(el), val = el.value;
-        var newText = "@"+div;
+        var newText = prefix+div;
         var tagNamelength=AlertPrevWord();
         sel.start=sel.start-tagNamelength.length;
         el.value = val.slice(0, sel.start) + newText + val.slice(sel.end);
@@ -1000,9 +1322,134 @@ var input="";
         document.getElementById('charCount').innerHTML=countCharactersInTextArea(document.getElementById('editor'));
         document.getElementById('hashTagsCount').innerHTML=hashTagCountInGivenText(document.getElementById('editor').value);
         document.getElementById('tag-name').style.display='none';
+        document.getElementById('hash-name').style.display='none';
         return true;
 
     }
+
+    function Toast(toast){
+
+        $('#unique-toast').remove();
+        if(timer){
+            clearTimeout(timer);
+        }
+
+        var imgDiv = document.createElement("div");
+        imgDiv.classList.add("toast-img");
+        var img = document.createElement("img");
+        img.setAttribute("src","/igcaptions/hackeroverflow/images/crt2.svg")
+        img.setAttribute("style","width:35px;height:35px;margin-left: 5px;");
+        imgDiv.appendChild(img);
+
+
+        var div1=document.createElement("div");
+
+        var headerDiv = document.createElement("div");
+        headerDiv.classList.add("toast-header");
+        var headerText = document.createTextNode(toast.headerMessage);
+        headerDiv.appendChild(headerText);
+
+        var bodyDiv = document.createElement("div");
+        bodyDiv.classList.add("toast-body");
+        var bodyText = document.createTextNode(toast.message);
+        bodyDiv.appendChild(bodyText);
+
+        div1.appendChild(headerDiv);
+        div1.appendChild(bodyDiv);
+
+if(toast.close) {
+    var closeDiv = document.createElement("div");
+    closeDiv.classList.add("toast-position");
+    closeDiv.setAttribute("style", "color: white;font-weight: 700;font-size: 20px;margin: auto;font-family: Montserrat,Roboto, Helvetica, sans-serif;margin-top: -4px;cursor: pointer");
+    closeDiv.setAttribute("onclick", "toastClose()")
+    var closeText = document.createTextNode("x");
+    closeDiv.appendChild(closeText);
+}
+
+        var mainDiv = document.createElement("div");
+        mainDiv.setAttribute("style",toast.grid);
+        mainDiv.appendChild(imgDiv);
+        mainDiv.appendChild(div1);
+        if(toast.close) {
+            mainDiv.appendChild(closeDiv);
+        }
+
+        var main = document.createElement("div");
+        main.setAttribute("id","unique-toast");
+        main.classList.add("toast-position");
+        main.setAttribute("style",toast.mainStyle);
+        main.appendChild(mainDiv);
+
+        if(toast.hasOwnProperty("append")) {
+            main.appendChild(toast.append);
+        }
+
+        document.getElementById('toast').appendChild(main);
+
+        if(toast.animation){
+
+            $('#unique-toast').hide().fadeIn(350);
+        }
+
+        if(!toast.hasOwnProperty("append")) {
+            timer = setTimeout(function () {
+
+                $('#unique-toast').fadeOut(500);
+
+            }, 2000);
+        }
+
+    }
+
+    function toastClose(){
+        $('#unique-toast').fadeOut(500);
+    }
+
+    function Close(bool) {
+
+        if(bool){
+            document.getElementById('fontChosen').setAttribute("data-info-normal","false");
+        }
+        $('#unique-toast').fadeOut(500);
+
+    }
+
+    function changeToNormal() {
+
+        document.getElementById('fontChosen').setAttribute("data-font","NORMAL");
+        document.getElementById('fontChosen').innerHTML="Normal";
+        $('#unique-toast').fadeOut(500);
+
+    }
+
+function copyToClipBoard(event){
+
+        if(document.getElementById('editor').value.length>0) {
+            document.getElementById('editor').select();
+            document.execCommand("Copy");
+            document.getElementById('editor').blur();
+            Toast({
+                header: true,
+                headerMessage: "Success!",
+                message: "Copied to Clipboard",
+                mainStyle: "background: #41D888;border-bottom: 8px solid #A2ECC5;",
+                grid: "display: grid;grid-template-columns: 50px 180px 50px;grid-column-gap: 10px;",
+                animation: true,
+                close: true
+            });
+        }
+        else{
+            Toast({
+                header: true,
+                headerMessage: "Warning!",
+                message: "Nothing To Copy, Experience it!",
+                mainStyle: "background: #FFBD00;border-bottom: 8px solid #FFDE81;",
+                grid: "display: grid;grid-template-columns: 50px 180px 50px;grid-column-gap: 10px;",
+                animation: true,
+                close: true
+            });
+        }
+}
 
 
 </script>
